@@ -838,6 +838,7 @@ searchInput.addEventListener("keydown", (event) => {
 // demo login-এর session মুছে login পাতায় ফিরিয়ে নেয়।
 function logout() {
   localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("accountId");
   localStorage.removeItem("username");
   localStorage.removeItem("fullName");
   localStorage.removeItem("email");

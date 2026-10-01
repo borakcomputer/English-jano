@@ -1,151 +1,236 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Register - English জানো</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - English জানো</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: "#4338e8",
-            blueText: "#0ea5e9"
-          }
-        }
-      }
-    }
-  </script>
-</head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4338e8",
+              blueText: "#0ea5e9",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
 
-<body class="bg-white min-h-screen">
-  <!-- account তৈরির form ও প্রয়োজনীয় তথ্য লেখার ঘর -->
-  <main class="w-full flex justify-center px-4 pt-4 pb-5">
-    <div class="w-full max-w-[445px]">
-
-      <div class="text-center mb-5">
-        <h1 class="text-[27px] md:text-[30px] font-bold text-[#111827]">
-          <span class="text-sky-500">Create</span> Your Account
-        </h1>
-        <p class="mt-1 text-[14px] md:text-[15px] text-slate-500">
-          অ্যাকাউন্ট তৈরি করে ইংরেজি শেখা শুরু করুন।
-        </p>
-      </div>
-
-      <div class="border border-slate-200 rounded-md bg-white px-5 py-4 shadow-sm">
-        <form id="registerForm">
-          <div class="mb-4">
-            <label for="fullName" class="block mb-1.5 text-[13px] font-semibold text-[#243b63]">Full Name</label>
-            <input
-              id="fullName"
-              name="fullName"
-              type="text"
-              autocomplete="name"
-              placeholder="আপনার পুরো নাম লিখুন"
-              required
-              class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
-            />
-          </div>
-
-          <div class="mb-4">
-            <label for="email" class="block mb-1.5 text-[13px] font-semibold text-[#243b63]">Email Address</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              placeholder="আপনার ইমেইল লিখুন"
-              required
-              class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
-            />
-          </div>
-
-          <div class="mb-4">
-            <label for="username" class="block mb-1.5 text-[13px] font-semibold text-[#243b63]">Username</label>
-            <input
-              id="username"
-              name="username"
-              type="text"
-              autocomplete="username"
-              placeholder="একটি ইউজারনেম বেছে নিন"
-              required
-              class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
-            />
-          </div>
-
-          <div class="mb-4">
-            <label for="password" class="block mb-1.5 text-[13px] font-semibold text-[#243b63]">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="new-password"
-              minlength="8"
-              placeholder="কমপক্ষে ৮ অক্ষরের পাসওয়ার্ড"
-              required
-              class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
-            />
-          </div>
-
-          <div class="mb-4">
-            <label for="confirmPassword" class="block mb-1.5 text-[13px] font-semibold text-[#243b63]">Confirm Password</label>
-            <input
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              autocomplete="new-password"
-              minlength="8"
-              placeholder="পাসওয়ার্ডটি আবার লিখুন"
-              required
-              class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
-            />
-          </div>
-
-          <button
-            type="submit"
-            class="w-full h-[38px] rounded-md bg-gradient-to-r from-indigo-700 to-purple-700 text-white text-[14px] font-semibold flex items-center justify-center shadow-sm hover:from-indigo-800 hover:to-purple-800 transition"
-          >
-            Create Account
-          </button>
-
-          <p class="mt-4 text-center text-[12px] text-slate-500">
-            Already have an account?
-            <a href="login.html" class="font-semibold text-blue-600 hover:text-blue-800">Login</a>
+  <body class="bg-white min-h-screen">
+    <!-- account তৈরির form ও প্রয়োজনীয় তথ্য লেখার ঘর -->
+    <main class="w-full flex justify-center px-4 pt-4 pb-5">
+      <div class="w-full max-w-[445px]">
+        <div class="text-center mb-5">
+          <h1 class="text-[27px] md:text-[30px] font-bold text-[#111827]">
+            <span class="text-sky-500">Create</span> Your Account
+          </h1>
+          <p class="mt-1 text-[14px] md:text-[15px] text-slate-500">
+            অ্যাকাউন্ট তৈরি করে ইংরেজি শেখা শুরু করুন।
           </p>
-        </form>
+        </div>
+
+        <div
+          class="border border-slate-200 rounded-md bg-white px-5 py-4 shadow-sm"
+        >
+          <form id="registerForm">
+            <div class="mb-4">
+              <label
+                for="fullName"
+                class="block mb-1.5 text-[13px] font-semibold text-[#243b63]"
+                >Full Name</label
+              >
+              <input
+                id="fullName"
+                name="fullName"
+                type="text"
+                autocomplete="name"
+                placeholder="আপনার পুরো নাম লিখুন"
+                required
+                class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="email"
+                class="block mb-1.5 text-[13px] font-semibold text-[#243b63]"
+                >Email Address</label
+              >
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="আপনার ইমেইল লিখুন"
+                required
+                class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="username"
+                class="block mb-1.5 text-[13px] font-semibold text-[#243b63]"
+                >Username</label
+              >
+              <input
+                id="username"
+                name="username"
+                type="text"
+                autocomplete="username"
+                placeholder="একটি ইউজারনেম বেছে নিন"
+                required
+                class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="password"
+                class="block mb-1.5 text-[13px] font-semibold text-[#243b63]"
+                >Password</label
+              >
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                minlength="12"
+                aria-describedby="password-rules register-message"
+                placeholder="কমপক্ষে ১২ অক্ষরের password"
+                required
+                class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+              />
+              <ul
+                id="password-rules"
+                class="mt-2 space-y-1 text-[11px] text-slate-500"
+              >
+                <li>কমপক্ষে ১২টি character</li>
+                <li>১টি uppercase, ১টি lowercase ও ১টি number</li>
+                <li>১টি special character; space দেওয়া যাবে না</li>
+              </ul>
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="confirmPassword"
+                class="block mb-1.5 text-[13px] font-semibold text-[#243b63]"
+                >Confirm Password</label
+              >
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                autocomplete="new-password"
+                minlength="12"
+                aria-describedby="register-message"
+                placeholder="পাসওয়ার্ডটি আবার লিখুন"
+                required
+                class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="w-full h-[38px] rounded-md bg-gradient-to-r from-indigo-700 to-purple-700 text-white text-[14px] font-semibold flex items-center justify-center shadow-sm hover:from-indigo-800 hover:to-purple-800 transition"
+            >
+              Create Account
+            </button>
+
+            <p
+              id="register-message"
+              class="mt-3 min-h-5 text-center text-[12px] text-rose-700"
+              aria-live="polite"
+            ></p>
+
+            <p class="mt-4 text-center text-[12px] text-slate-500">
+              Already have an account?
+              <a
+                href="login.html"
+                class="font-semibold text-blue-600 hover:text-blue-800"
+                >Login</a
+              >
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <!-- password মিলিয়ে demo profile সংরক্ষণ করে dashboard খোলে -->
-  <script>
-    if (localStorage.getItem("isLoggedIn") === "true") {
-      window.location.replace("index.html");
-    }
+    <!-- account নিবন্ধন ও password policy যাচাই -->
+    <script src="./script/auth.js"></script>
+    <script>
+      const { isPasswordValid, registerAccount } = window.EnglishSikhoAuth;
 
-    document.getElementById("registerForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const fullName = document.getElementById("fullName").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value;
-      const confirmPassword = document.getElementById("confirmPassword").value;
-
-      if (password !== confirmPassword) {
-        alert("দুটি পাসওয়ার্ড মিলছে না।");
-        return;
+      if (localStorage.getItem("isLoggedIn") === "true") {
+        window.location.replace("index.html");
       }
 
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("username", username);
-      localStorage.setItem("fullName", fullName);
-      localStorage.setItem("email", email);
+      const registerForm = document.getElementById("registerForm");
+      const passwordInput = document.getElementById("password");
+      const message = document.getElementById("register-message");
 
-      window.location.replace("index.html");
-    });
-  </script>
-</body>
+      registerForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        message.textContent = "";
+
+        const fullName = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const username = document.getElementById("username").value.trim();
+        const password = passwordInput.value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+
+        if (!isPasswordValid(password)) {
+          message.textContent = "Password-এর সব নিয়ম পূরণ করুন।";
+          passwordInput.focus();
+          return;
+        }
+        if (password !== confirmPassword) {
+          message.textContent = "দুটি password মিলছে না।";
+          document.getElementById("confirmPassword").focus();
+          return;
+        }
+
+        const submitButton = registerForm.querySelector(
+          "button[type='submit']",
+        );
+        submitButton.disabled = true;
+        submitButton.textContent = "Creating account...";
+
+        try {
+          const result = await registerAccount({
+            fullName,
+            email,
+            username,
+            password,
+          });
+          if (!result.ok) {
+            message.textContent =
+              result.reason === "exists"
+                ? "এই email বা username দিয়ে account আগে থেকেই আছে।"
+                : "Password-এর সব নিয়ম পূরণ করুন।";
+            submitButton.disabled = false;
+            submitButton.textContent = "Create Account";
+            return;
+          }
+          window.location.replace("login.html?registered=1");
+        } catch {
+          message.textContent = "Account তৈরি করা যায়নি। আবার চেষ্টা করুন।";
+          submitButton.disabled = false;
+          submitButton.textContent = "Create Account";
+        }
+      });
+    </script>
+  </body>
+</html>
+      submitButton.disabled = false;
+          submitButton.textContent = "Create Account";
+        }
+      });
+    </script>
+  </body>
 </html>

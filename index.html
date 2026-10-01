@@ -35,9 +35,15 @@
 
     <link rel="stylesheet" href="./style/style.css" />
 
-    <!-- লগইন না থাকলে ব্যবহারকারীকে লগইন পাতায় পাঠায় -->
+    <!-- নিবন্ধিত account ID ছাড়া dashboard খোলা যাবে না -->
+    <script src="./script/auth.js"></script>
     <script>
-      if (localStorage.getItem("isLoggedIn") !== "true") {
+      if (
+        localStorage.getItem("isLoggedIn") !== "true" ||
+        !window.EnglishSikhoAuth.hasActiveAccount()
+      ) {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("accountId");
         window.location.replace("login.html");
       }
     </script>
