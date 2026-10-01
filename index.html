@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>English Janala | Best Platform for learning English</title>
+    <meta name="theme-color" content="#173f36" />
+    <meta
+      name="description"
+      content="English Sikho - প্রতিদিন অল্প অল্প করে ইংরেজি শিখুন, অনুশীলন করুন এবং নিজের অগ্রগতি দেখুন।"
+    />
+    <title>English Sikho | Learn a little, every day</title>
 
     <link rel="shortcut icon" href="./assets/logo.svg" type="image/svg+xml" />
 
@@ -15,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -25,8 +30,6 @@
       type="text/css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="stylesheet" href="./style/style.css" />
 
     <link rel="stylesheet" href="./style/style.css" />
 
@@ -40,15 +43,22 @@
 
   <body>
     <header>
-      <div class="navbar bg-base-100 shadow-sm px-4 md:px-8">
+      <div class="navbar site-nav px-4 md:px-8">
         <div class="navbar-start">
           <div class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <button
+              type="button"
+              aria-label="Open navigation"
+              aria-expanded="false"
+              aria-controls="mobile-navigation"
+              class="btn btn-ghost lg:hidden"
+            >
               <i class="fa-solid fa-bars text-lg"></i>
-            </div>
+            </button>
 
             <ul
-              tabindex="0"
+              id="mobile-navigation"
+              tabindex="-1"
               class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
             >
               <li>
@@ -78,31 +88,32 @@
           </div>
 
           <a href="index.html" class="flex items-center gap-1">
-            <span class="text-lg font-bold">English</span>
-            <img src="./assets/logo.svg" alt="Logo" class="w-7 h-7" />
-            <span class="font-bangla text-lg font-semibold">জানালা</span>
+            <span class="brand-mark"><i class="fa-solid fa-language"></i></span>
+            <span class="brand-name"
+              >English <b>Sikho</b><small>ENGLISH, EVERY DAY</small></span
+            >
           </a>
         </div>
 
         <div class="navbar-end hidden lg:flex">
           <ul class="menu menu-horizontal px-1 space-x-2">
             <li>
-              <a href="#faq" class="btn btn-outline btn-primary">
+              <a href="#faq" class="btn btn-ghost nav-link">
                 <i class="fa-solid fa-circle-question"></i> FAQ
               </a>
             </li>
             <li>
-              <a href="#learn" class="btn btn-outline btn-primary">
+              <a href="#learn" class="btn btn-ghost nav-link">
                 <i class="fa-solid fa-book-open"></i> Learn
               </a>
             </li>
             <li>
-              <a href="#practice" class="btn btn-outline btn-primary">
+              <a href="#practice" class="btn btn-ghost nav-link">
                 <i class="fa-solid fa-brain"></i> Practice
               </a>
             </li>
             <li>
-              <a href="#saved" class="btn btn-outline btn-primary">
+              <a href="#saved" class="btn btn-ghost nav-link">
                 <i class="fa-solid fa-bookmark"></i> Saved Words
               </a>
             </li>
@@ -110,7 +121,7 @@
               <a
                 href="#"
                 onclick="logout(); return false;"
-                class="btn btn-outline btn-primary"
+                class="btn btn-outline logout-link"
               >
                 <i class="fa-solid fa-arrow-right-from-bracket"></i> LogOut
               </a>
@@ -120,269 +131,375 @@
       </div>
     </header>
 
-    <section
-      class="flex flex-col-reverse md:flex-row gap-10 justify-between items-center py-8 w-11/12 mx-auto"
-    >
-      <div class="content flex-1 text-center md:text-left">
-        <p class="font-bangla text-sky-600 font-semibold mb-2">
-          Welcome back, <span id="learner-name">Learner</span>
-        </p>
-        <h2 class="text-4xl font-bold mb-8">
-          <span class="text-sky-400">English</span> is Easy!!
-        </h2>
-        <p class="font-bangla">
-          আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
-          আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে
-          অন্য একটি Level এ
-        </p>
-        <div class="flex flex-wrap gap-3 justify-center md:justify-start mt-6">
-          <a href="#learn" class="btn btn-primary"
-            ><i class="fa-solid fa-book-open"></i> Start learning</a
-          >
-          <a href="#practice" class="btn btn-outline btn-primary"
-            ><i class="fa-solid fa-brain"></i> Quick practice</a
-          >
-        </div>
-      </div>
-
-      <div class="image flex-1 flex justify-center">
-        <img
-          src="./assets/hero-student.svg"
-          alt="English learning illustration"
-          class="max-w-md w-full"
-        />
-      </div>
-    </section>
-
-    <section class="w-11/12 mx-auto py-5" aria-labelledby="progress-title">
-      <div
-        class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-4"
-      >
-        <div>
-          <p class="text-sm font-semibold uppercase text-sky-600">
-            Your journey
+    <main>
+      <section class="hero-shell page-width" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="hero-kicker"><span></span> YOUR DAILY ENGLISH RITUAL</p>
+          <p class="font-bangla hero-welcome">
+            আবার স্বাগতম, <span id="learner-name">Learner</span>
           </p>
-          <h2 id="progress-title" class="text-2xl font-bold">
-            Learning snapshot
-          </h2>
-        </div>
-        <p class="font-bangla text-slate-500">প্রতিদিন অল্প অল্প করে শিখুন</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-3 border-y border-slate-200">
-        <div class="py-4 sm:px-5 sm:border-r border-slate-200">
-          <p class="text-sm text-slate-500">Words mastered</p>
-          <p class="text-2xl font-bold">
-            <span id="stat-learned">0</span
-            ><span class="text-sm font-normal text-slate-500">
-              / <span id="stat-total">0</span></span
+          <h1 id="hero-title">Small steps.<br /><em>Big fluency.</em></h1>
+          <p class="font-bangla hero-description">
+            প্রতিদিন একটু করে শিখুন। নতুন শব্দ, ছোট্ট অনুশীলন আর নিয়মিত চর্চায়
+            ইংরেজি হয়ে উঠুক আপনার নিজের ভাষা।
+          </p>
+          <div class="hero-actions">
+            <a href="#learn" class="btn btn-accent"
+              ><i class="fa-solid fa-arrow-right"></i> আজকের শেখা শুরু করুন</a
             >
-          </p>
-        </div>
-        <div class="py-4 sm:px-5 sm:border-r border-slate-200">
-          <p class="text-sm text-slate-500">Saved for review</p>
-          <p id="stat-saved" class="text-2xl font-bold">0</p>
-        </div>
-        <div class="py-4 sm:px-5">
-          <p class="text-sm text-slate-500">Learning progress</p>
-          <div class="flex items-center gap-3 mt-2">
-            <progress
-              id="learning-progress"
-              class="progress progress-primary w-full"
-              value="0"
-              max="100"
-            ></progress>
-            <span id="progress-label" class="text-sm font-semibold">0%</span>
+            <a href="#practice" class="hero-text-link"
+              >এক মিনিটের practice
+              <i class="fa-solid fa-arrow-up-right-from-square"></i
+            ></a>
+          </div>
+          <div class="hero-note">
+            <span class="avatar-stack"
+              ><i class="fa-solid fa-user"></i
+              ><i class="fa-solid fa-book-open"></i
+              ><i class="fa-solid fa-check"></i></span
+            ><span>নিজের গতিতে, নিজের মতো করে</span>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section
-      class="w-11/12 mx-auto my-8 border-l-4 border-sky-500 bg-sky-50 px-5 py-5 md:px-7"
-      aria-labelledby="daily-title"
-    >
-      <div
-        class="flex flex-col md:flex-row md:items-center md:justify-between gap-5"
-      >
-        <div>
-          <p class="text-sm font-semibold uppercase text-sky-700">
-            A little practice every day
-          </p>
-          <h2 id="daily-title" class="text-2xl font-bold mt-1">
-            Word of the day
-          </h2>
-          <p id="daily-word" class="text-3xl font-bold text-slate-900 mt-3"></p>
-          <p id="daily-meaning" class="font-bangla text-lg text-slate-700"></p>
-          <p id="daily-example" class="text-sm text-slate-500 mt-1"></p>
+        <div class="hero-art">
+          <div class="hero-art-orbit orbit-one"></div>
+          <div class="hero-art-orbit orbit-two"></div>
+          <img
+            src="./assets/hero-student.svg"
+            alt="A learner building a daily English habit"
+          />
+          <div class="floating-note">
+            <span class="note-icon"><i class="fa-solid fa-fire"></i></span
+            ><span
+              ><b id="streak-count">0</b> day streak<small
+                >KEEP IT GOING</small
+              ></span
+            >
+          </div>
+          <span class="art-caption">A LITTLE BETTER, EVERY DAY</span>
         </div>
-        <button
-          id="daily-learned"
-          type="button"
-          class="btn btn-primary self-start md:self-center"
+        <span class="hero-index">01 <i></i> 06</span>
+      </section>
+
+      <section
+        class="progress-section page-width py-5"
+        aria-labelledby="progress-title"
+      >
+        <div
+          class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-4"
         >
-          <i class="fa-solid fa-check"></i> Mark as learned
-        </button>
-      </div>
-    </section>
+          <div>
+            <p class="section-kicker">YOUR JOURNEY</p>
+            <h2 id="progress-title" class="text-2xl font-bold">
+              Learning snapshot
+            </h2>
+          </div>
+          <p class="font-bangla text-slate-500">প্রতিদিন অল্প অল্প করে শিখুন</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-icon stat-green"
+              ><i class="fa-solid fa-book-open"></i
+            ></span>
+            <div>
+              <p class="stat-label">Words mastered</p>
+              <p class="stat-value">
+                <span id="stat-learned">0</span
+                ><span class="text-sm font-normal text-slate-500">
+                  / <span id="stat-total">0</span></span
+                >
+              </p>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon stat-coral"
+              ><i class="fa-solid fa-bookmark"></i
+            ></span>
+            <div>
+              <p class="stat-label">Saved for review</p>
+              <p id="stat-saved" class="stat-value">0</p>
+            </div>
+          </div>
+          <div class="stat-item stat-progress">
+            <span class="stat-icon stat-lime"
+              ><i class="fa-solid fa-chart-line"></i
+            ></span>
+            <div class="progress-copy">
+              <p class="stat-label">Learning progress</p>
+              <div class="flex items-center gap-3 mt-2">
+                <progress
+                  id="learning-progress"
+                  class="progress w-full"
+                  value="0"
+                  max="100"
+                ></progress>
+                <span id="progress-label" class="text-sm font-semibold"
+                  >0%</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <section id="learn" class="py-10">
-      <h2 class="text-4xl font-bold mb-8 text-center">
-        <span class="text-sky-400">Let's</span> Learn Vocabulary
-      </h2>
+      <section
+        class="daily-section page-width my-8"
+        aria-labelledby="daily-title"
+      >
+        <div
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-5"
+        >
+          <div class="daily-word-copy">
+            <p class="section-kicker">A LITTLE PRACTICE, EVERY DAY</p>
+            <h2 id="daily-title" class="text-2xl font-bold mt-1">
+              Word of the day
+            </h2>
+            <p
+              id="daily-word"
+              class="text-3xl font-bold text-slate-900 mt-3"
+            ></p>
+            <p
+              id="daily-meaning"
+              class="font-bangla text-lg text-slate-700"
+            ></p>
+            <p id="daily-example" class="text-sm text-slate-500 mt-1"></p>
+          </div>
+          <div class="daily-side">
+            <div class="daily-goal">
+              <span class="goal-ring"><i class="fa-solid fa-bullseye"></i></span
+              ><span
+                ><b id="goal-count">0</b> / 5 words<small
+                  >YOUR DAILY GOAL</small
+                ></span
+              >
+            </div>
+            <button
+              id="daily-learned"
+              type="button"
+              class="btn btn-accent self-start md:self-center"
+            >
+              <i class="fa-solid fa-check"></i> Mark as learned
+            </button>
+          </div>
+        </div>
+      </section>
 
-      <div
-        id="level-container"
-        class="flex gap-3 flex-wrap justify-center px-4"
-      ></div>
-    </section>
+      <section id="learn" class="py-10">
+        <div class="section-heading">
+          <p class="section-kicker">BUILD YOUR VOCABULARY</p>
+          <h2 class="section-title">A word at a time.</h2>
+          <p class="font-bangla section-subtitle">
+            নিজের পছন্দের lesson বেছে নিয়ে শেখা শুরু করুন
+          </p>
+        </div>
 
-    <section class="flex justify-center px-4">
-      <div class="join">
-        <div>
-          <label class="input validator join-item">
-            <input
+        <div
+          id="level-container"
+          class="lesson-list flex gap-3 flex-wrap justify-center px-4"
+        ></div>
+      </section>
+
+      <section class="search-section page-width flex justify-center px-4">
+        <div class="search-box">
+          <label class="search-input-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i
+            ><input
               id="input-search"
               type="text"
+              aria-label="Search English words or Bangla meanings"
               placeholder="Search Vocabulary Now"
-              autocomplete="off"
-            />
-          </label>
-        </div>
-        <button id="btn-search" class="btn btn-primary">Search</button>
-      </div>
-    </section>
-
-    <section id="spinner" class="flex justify-center items-center py-10 hidden">
-      <span class="loading loading-bars loading-xl"></span>
-    </section>
-
-    <section
-      id="word-container"
-      class="bg-gray-100 p-5 md:p-10 w-11/12 mx-auto my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-    >
-      <div
-        class="text-center bg-sky-100 col-span-full rounded-xl py-10 space-y-6 font-bangla"
-      >
-        <p class="text-xl font-medium text-gray-400">
-          আপনি এখনো কোন Lesson Select করেন নি
-        </p>
-        <h2 class="font-bold text-4xl">একটি Lesson Select করুন।</h2>
-      </div>
-    </section>
-
-    <section
-      id="practice"
-      class="w-11/12 mx-auto py-8 scroll-mt-6"
-      aria-labelledby="practice-title"
-    >
-      <div class="max-w-3xl mx-auto">
-        <p class="text-sm font-semibold uppercase text-sky-600">
-          Check what you remember
-        </p>
-        <h2 id="practice-title" class="text-3xl font-bold mb-5">
-          Quick practice
-        </h2>
-        <div class="border border-slate-200 rounded-md p-5 md:p-7">
-          <p class="text-sm text-slate-500">
-            Choose the correct Bangla meaning
-          </p>
-          <h3 id="quiz-word" class="text-2xl font-bold mt-2">
-            Ready for a quick question?
-          </h3>
-          <div id="quiz-options" class="grid sm:grid-cols-2 gap-3 mt-5"></div>
-          <p
-            id="quiz-feedback"
-            class="font-bangla mt-4 min-h-6"
-            aria-live="polite"
-          ></p>
-          <div class="flex gap-3 mt-3">
-            <button id="quiz-start" type="button" class="btn btn-primary">
-              <i class="fa-solid fa-play"></i> Start practice
-            </button>
-            <button
-              id="quiz-next"
+              autocomplete="off" /><button
+              id="clear-search"
+              class="icon-button clear-search hidden"
               type="button"
-              class="btn btn-outline btn-primary hidden"
+              aria-label="Clear search"
+              title="Clear search"
             >
-              Next question <i class="fa-solid fa-arrow-right"></i>
-            </button>
+              <i class="fa-solid fa-xmark"></i></button></label
+          ><button id="btn-search" type="button" class="btn btn-primary">
+            <i class="fa-solid fa-magnifying-glass"></i><span>Search</span>
+          </button>
+        </div>
+      </section>
+
+      <section
+        class="vocab-toolbar page-width"
+        aria-label="Vocabulary controls"
+      >
+        <div class="filter-group" role="group" aria-label="Filter vocabulary">
+          <button
+            type="button"
+            class="filter-button active"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            All words
+          </button>
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="unlearned"
+            aria-pressed="false"
+          >
+            To learn
+          </button>
+          <button
+            type="button"
+            class="filter-button"
+            data-filter="saved"
+            aria-pressed="false"
+          >
+            Saved
+          </button>
+        </div>
+        <div class="results-tools">
+          <p id="results-count" aria-live="polite">0 words</p>
+          <button id="random-word" type="button" class="random-word-button">
+            <i class="fa-solid fa-shuffle"></i> Surprise me
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="spinner"
+        class="flex justify-center items-center py-10 hidden"
+      >
+        <span class="loading loading-bars loading-xl"></span>
+      </section>
+
+      <section
+        id="word-container"
+        class="word-grid page-width p-5 md:p-10 mx-auto my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+      >
+        <div
+          class="text-center bg-sky-100 col-span-full rounded-xl py-10 space-y-6 font-bangla"
+        >
+          <p class="text-xl font-medium text-gray-400">
+            আপনি এখনো কোন Lesson Select করেন নি
+          </p>
+          <h2 class="font-bold text-4xl">একটি Lesson Select করুন।</h2>
+        </div>
+      </section>
+
+      <section
+        id="practice"
+        class="w-11/12 mx-auto py-8 scroll-mt-6"
+        aria-labelledby="practice-title"
+      >
+        <div class="practice-layout">
+          <div class="practice-intro">
+            <p class="section-kicker">MAKE IT STICK</p>
+            <h2 id="practice-title" class="section-title">Quick practice</h2>
+            <p class="font-bangla section-subtitle">
+              মনে আছে তো? ছোট্ট quiz-এ যাচাই করে নিন।
+            </p>
+            <div class="score-chip">
+              <i class="fa-solid fa-trophy"></i
+              ><span
+                ><b id="quiz-score">0</b> correct
+                <small><span id="quiz-round">0</span> answered</small></span
+              >
+            </div>
+          </div>
+          <div class="quiz-panel">
+            <p class="text-sm text-slate-500">
+              Choose the correct Bangla meaning
+            </p>
+            <h3 id="quiz-word" class="text-2xl font-bold mt-2">
+              Ready for a quick question?
+            </h3>
+            <div id="quiz-options" class="grid sm:grid-cols-2 gap-3 mt-5"></div>
+            <p
+              id="quiz-feedback"
+              class="font-bangla mt-4 min-h-6"
+              aria-live="polite"
+            ></p>
+            <div class="flex gap-3 mt-3">
+              <button id="quiz-start" type="button" class="btn btn-primary">
+                <i class="fa-solid fa-play"></i> Start practice
+              </button>
+              <button
+                id="quiz-next"
+                type="button"
+                class="btn btn-outline btn-primary hidden"
+              >
+                Next question <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section
-      id="saved"
-      class="w-11/12 mx-auto py-8 scroll-mt-6"
-      aria-labelledby="saved-title"
-    >
-      <div
-        class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-5"
+      <section
+        id="saved"
+        class="w-11/12 mx-auto py-8 scroll-mt-6"
+        aria-labelledby="saved-title"
       >
-        <div>
-          <p class="text-sm font-semibold uppercase text-sky-600">
-            Your personal review list
+        <div
+          class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-5"
+        >
+          <div>
+            <p class="section-kicker">YOUR PERSONAL REVIEW LIST</p>
+            <h2 id="saved-title" class="section-title">Saved words</h2>
+          </div>
+          <p class="font-bangla text-slate-500">
+            যে শব্দগুলো আবার দেখতে চান, সেগুলো এখানে পাবেন।
           </p>
-          <h2 id="saved-title" class="text-3xl font-bold">Saved words</h2>
         </div>
-        <p class="font-bangla text-slate-500">
-          যে শব্দগুলো আবার দেখতে চান, সেগুলো এখানে পাবেন।
-        </p>
-      </div>
-      <div
-        id="saved-container"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-      ></div>
-    </section>
+        <div
+          id="saved-container"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+        ></div>
+      </section>
 
-    <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
-      <div class="modal-box">
-        <div id="details-container" class="space-y-5"></div>
-        <div class="modal-action">
-          <form method="dialog">
-            <button class="btn">Close</button>
-          </form>
+      <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <div id="details-container" class="space-y-5"></div>
+          <div class="modal-action">
+            <form method="dialog">
+              <button class="btn">Close</button>
+            </form>
+          </div>
         </div>
-      </div>
-    </dialog>
+      </dialog>
 
-    <section id="faq" class="w-11/12 mx-auto pb-12 text-center">
-      <h2 class="text-3xl font-bold mb-4">FAQ</h2>
-      <div class="max-w-2xl mx-auto text-left space-y-2">
-        <details
-          class="collapse collapse-arrow border border-slate-200 bg-white"
-        >
-          <summary class="collapse-title font-semibold">
-            কীভাবে নতুন শব্দ শিখব?
-          </summary>
-          <p class="collapse-content font-bangla text-slate-600">
-            একটি lesson বেছে নিন, শব্দের অর্থ ও example পড়ুন, তারপর Quick
-            Practice দিয়ে নিজেকে যাচাই করুন।
-          </p>
-        </details>
-        <details
-          class="collapse collapse-arrow border border-slate-200 bg-white"
-        >
-          <summary class="collapse-title font-semibold">
-            Saved words কোথায় পাব?
-          </summary>
-          <p class="collapse-content font-bangla text-slate-600">
-            যেকোনো শব্দে Save for review চাপলে সেটি Saved Words অংশে যোগ হবে।
-          </p>
-        </details>
-        <details
-          class="collapse collapse-arrow border border-slate-200 bg-white"
-        >
-          <summary class="collapse-title font-semibold">
-            আমার শেখার অগ্রগতি কি থাকবে?
-          </summary>
-          <p class="collapse-content font-bangla text-slate-600">
-            এই demo-তে শেখা ও saved শব্দগুলো আপনার browser-এর local storage-এ
-            রাখা হয়।
-          </p>
-        </details>
-      </div>
-    </section>
+      <section id="faq" class="w-11/12 mx-auto pb-12 text-center">
+        <h2 class="text-3xl font-bold mb-4">FAQ</h2>
+        <div class="max-w-2xl mx-auto text-left space-y-2">
+          <details
+            class="collapse collapse-arrow border border-slate-200 bg-white"
+          >
+            <summary class="collapse-title font-semibold">
+              কীভাবে নতুন শব্দ শিখব?
+            </summary>
+            <p class="collapse-content font-bangla text-slate-600">
+              একটি lesson বেছে নিন, শব্দের অর্থ ও example পড়ুন, তারপর Quick
+              Practice দিয়ে নিজেকে যাচাই করুন।
+            </p>
+          </details>
+          <details
+            class="collapse collapse-arrow border border-slate-200 bg-white"
+          >
+            <summary class="collapse-title font-semibold">
+              Saved words কোথায় পাব?
+            </summary>
+            <p class="collapse-content font-bangla text-slate-600">
+              যেকোনো শব্দে Save for review চাপলে সেটি Saved Words অংশে যোগ হবে।
+            </p>
+          </details>
+          <details
+            class="collapse collapse-arrow border border-slate-200 bg-white"
+          >
+            <summary class="collapse-title font-semibold">
+              আমার শেখার অগ্রগতি কি থাকবে?
+            </summary>
+            <p class="collapse-content font-bangla text-slate-600">
+              এই demo-তে শেখা ও saved শব্দগুলো আপনার browser-এর local storage-এ
+              রাখা হয়।
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
 
     <script src="./script/index.js"></script>
   </body>
