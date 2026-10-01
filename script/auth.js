@@ -3,9 +3,7 @@ const PASSWORD_ITERATIONS = 150000;
 
 function getAccounts() {
   try {
-    const accounts = JSON.parse(
-      localStorage.getItem(ACCOUNT_STORAGE_KEY) || "[]",
-    );
+    const accounts = JSON.parse(localStorage.getItem(ACCOUNT_STORAGE_KEY) || "[]");
     return Array.isArray(accounts) ? accounts : [];
   } catch {
     return [];
@@ -13,9 +11,7 @@ function getAccounts() {
 }
 
 function toHex(bytes) {
-  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join(
-    "",
-  );
+  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
 async function hashPassword(password, saltHex) {
@@ -37,9 +33,9 @@ async function hashPassword(password, saltHex) {
   return toHex(new Uint8Array(derivedBits));
 }
 
-export function isPasswordValid(password) {
+function isPasswordValid(password) {
   return (
-    password.length >= 12 &&
+    password.length >= 8 &&
     /[A-Z]/.test(password) &&
     /[a-z]/.test(password) &&
     /[0-9]/.test(password) &&
@@ -48,7 +44,14 @@ export function isPasswordValid(password) {
   );
 }
 
-export async function registerAccount({ fullName, email, username, password }) {
+function hasActiveAccount() {
+  const accountId = localStorage.getItem("accountId");
+  return Boolean(
+    accountId && getAccounts().some((account) => account.id === accountId),
+  );
+}
+
+async function registerAccount({ fullName, email, username, password }) {
   const accounts = getAccounts();
   const normalizedEmail = email.trim().toLowerCase();
   const normalizedUsername = username.trim().toLowerCase();
@@ -64,6 +67,7 @@ export async function registerAccount({ fullName, email, username, password }) {
   const salt = toHex(crypto.getRandomValues(new Uint8Array(16)));
   const passwordHash = await hashPassword(password, salt);
   accounts.push({
+    id: toHex(crypto.getRandomValues(new Uint8Array(16))),
     fullName: fullName.trim(),
     email: normalizedEmail,
     username: username.trim(),
@@ -74,9 +78,10 @@ export async function registerAccount({ fullName, email, username, password }) {
   return { ok: true };
 }
 
-export async function authenticateAccount(identifier, password) {
+async function authenticateAccount(identifier, password) {
   const normalizedIdentifier = identifier.trim().toLowerCase();
-  const account = getAccounts().find(
+  const accounts = getAccounts();
+  const account = accounts.find(
     (savedAccount) =>
       savedAccount.email.toLowerCase() === normalizedIdentifier ||
       savedAccount.username.toLowerCase() === normalizedIdentifier,
@@ -84,20 +89,18 @@ export async function authenticateAccount(identifier, password) {
 
   if (!account || !account.salt || !account.passwordHash) return null;
   const passwordHash = await hashPassword(password, account.salt);
-  return passwordHash === account.passwordHash ? account : null;
+  if (passwordHash !== account.passwordHash) return null;
+
+  if (!account.id) {
+    account.id = toHex(crypto.getRandomValues(new Uint8Array(16)));
+    localStorage.setItem(ACCOUNT_STORAGE_KEY, JSON.stringify(accounts));
+  }
+  return account;
 }
-Auth = {
-  isPasswordValid,
-  registerAccount,
-  authenticateAccount,
-};
-sh) return null;
-  const passwordHash = await hashPassword(password, account.salt);
-  return passwordHash === account.passwordHash ? account : null;
-}
+
 window.EnglishSikhoAuth = {
   isPasswordValid,
+  hasActiveAccount,
   registerAccount,
   authenticateAccount,
-  hasActiveAccount,
 };

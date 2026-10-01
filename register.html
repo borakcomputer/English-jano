@@ -36,7 +36,7 @@
         <div
           class="border border-slate-200 rounded-md bg-white px-5 py-4 shadow-sm"
         >
-          <form id="registerForm">
+          <form id="registerForm" novalidate>
             <div class="mb-4">
               <label
                 for="fullName"
@@ -94,22 +94,60 @@
                 class="block mb-1.5 text-[13px] font-semibold text-[#243b63]"
                 >Password</label
               >
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autocomplete="new-password"
-                minlength="12"
-                aria-describedby="password-rules register-message"
-                placeholder="কমপক্ষে ১২ অক্ষরের password"
-                required
-                class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
-              />
+              <div class="relative">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  aria-describedby="password-rules register-message"
+                  placeholder="কমপক্ষে ৮ অক্ষরের password"
+                  required
+                  class="w-full h-[38px] rounded-md border border-slate-300 px-3 pr-10 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+                />
+                <button
+                  type="button"
+                  data-password-target="password"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                  class="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                >
+                  <svg
+                    data-eye-open
+                    class="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"
+                    />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <svg
+                    data-eye-closed
+                    class="hidden h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8" />
+                    <path
+                      d="M9.9 5.2A11 11 0 0 1 12 5c6.5 0 10 7 10 7a15 15 0 0 1-3 3.8M6.2 6.2C3.5 8 2 12 2 12s3.5 7 10 7c1.3 0 2.5-.3 3.5-.8"
+                    />
+                  </svg>
+                </button>
+              </div>
               <ul
                 id="password-rules"
                 class="mt-2 space-y-1 text-[11px] text-slate-500"
               >
-                <li>কমপক্ষে ১২টি character</li>
+                <li>কমপক্ষে ৮টি character</li>
                 <li>১টি uppercase, ১টি lowercase ও ১টি number</li>
                 <li>১টি special character; space দেওয়া যাবে না</li>
               </ul>
@@ -121,17 +159,55 @@
                 class="block mb-1.5 text-[13px] font-semibold text-[#243b63]"
                 >Confirm Password</label
               >
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                autocomplete="new-password"
-                minlength="12"
-                aria-describedby="register-message"
-                placeholder="পাসওয়ার্ডটি আবার লিখুন"
-                required
-                class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
-              />
+              <div class="relative">
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  aria-describedby="register-message"
+                  placeholder="পাসওয়ার্ডটি আবার লিখুন"
+                  required
+                  class="w-full h-[38px] rounded-md border border-slate-300 px-3 pr-10 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+                />
+                <button
+                  type="button"
+                  data-password-target="confirmPassword"
+                  aria-label="Show confirmation password"
+                  aria-pressed="false"
+                  class="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                >
+                  <svg
+                    data-eye-open
+                    class="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"
+                    />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <svg
+                    data-eye-closed
+                    class="hidden h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8" />
+                    <path
+                      d="M9.9 5.2A11 11 0 0 1 12 5c6.5 0 10 7 10 7a15 15 0 0 1-3 3.8M6.2 6.2C3.5 8 2 12 2 12s3.5 7 10 7c1.3 0 2.5-.3 3.5-.8"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             <button
@@ -163,19 +239,59 @@
     <!-- account নিবন্ধন ও password policy যাচাই -->
     <script src="./script/auth.js"></script>
     <script>
-      const { isPasswordValid, registerAccount } = window.EnglishSikhoAuth;
+      const { isPasswordValid, registerAccount, hasActiveAccount } =
+        window.EnglishSikhoAuth;
 
-      if (localStorage.getItem("isLoggedIn") === "true") {
+      if (localStorage.getItem("isLoggedIn") === "true" && hasActiveAccount()) {
         window.location.replace("index.html");
+      } else {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("accountId");
       }
 
       const registerForm = document.getElementById("registerForm");
       const passwordInput = document.getElementById("password");
       const message = document.getElementById("register-message");
 
+      document.querySelectorAll("[data-password-target]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const input = document.getElementById(button.dataset.passwordTarget);
+          const showPassword = input.type === "password";
+          input.type = showPassword ? "text" : "password";
+          button.setAttribute("aria-pressed", String(showPassword));
+          button.setAttribute(
+            "aria-label",
+            showPassword ? "Hide password" : "Show password",
+          );
+          button
+            .querySelector("[data-eye-open]")
+            .classList.toggle("hidden", showPassword);
+          button
+            .querySelector("[data-eye-closed]")
+            .classList.toggle("hidden", !showPassword);
+        });
+      });
+      const pendingIdentifier = new URLSearchParams(window.location.search).get(
+        "identifier",
+      );
+
+      if (pendingIdentifier) {
+        const identifierField = pendingIdentifier.includes("@")
+          ? document.getElementById("email")
+          : document.getElementById("username");
+        identifierField.value = pendingIdentifier;
+      }
+
       registerForm.addEventListener("submit", async (event) => {
         event.preventDefault();
         message.textContent = "";
+
+        if (!registerForm.checkValidity()) {
+          const errorMessage = "সব তথ্য সঠিকভাবে পূরণ করুন।";
+          message.textContent = errorMessage;
+          alert(errorMessage);
+          return;
+        }
 
         const fullName = document.getElementById("fullName").value.trim();
         const email = document.getElementById("email").value.trim();
@@ -185,12 +301,17 @@
           document.getElementById("confirmPassword").value;
 
         if (!isPasswordValid(password)) {
-          message.textContent = "Password-এর সব নিয়ম পূরণ করুন।";
+          const errorMessage =
+            "Password-এর নিয়ম: ৮+ character, uppercase, lowercase, number ও special character; space নয়।";
+          message.textContent = errorMessage;
+          alert(errorMessage);
           passwordInput.focus();
           return;
         }
         if (password !== confirmPassword) {
-          message.textContent = "দুটি password মিলছে না।";
+          const errorMessage = "দুটি password মিলছে না।";
+          message.textContent = errorMessage;
+          alert(errorMessage);
           document.getElementById("confirmPassword").focus();
           return;
         }
@@ -213,21 +334,19 @@
               result.reason === "exists"
                 ? "এই email বা username দিয়ে account আগে থেকেই আছে।"
                 : "Password-এর সব নিয়ম পূরণ করুন।";
+            alert(message.textContent);
             submitButton.disabled = false;
             submitButton.textContent = "Create Account";
             return;
           }
           window.location.replace("login.html?registered=1");
-        } catch {
-          message.textContent = "Account তৈরি করা যায়নি। আবার চেষ্টা করুন।";
+        } catch (error) {
+          message.textContent =
+            error.code === "SECURE_CRYPTO_UNAVAILABLE"
+              ? "HTTPS বা localhost দিয়ে page খুলে আবার register করুন।"
+              : "Account তৈরি করা যায়নি। আবার চেষ্টা করুন।";
+          alert(message.textContent);
           submitButton.disabled = false;
-          submitButton.textContent = "Create Account";
-        }
-      });
-    </script>
-  </body>
-</html>
-      submitButton.disabled = false;
           submitButton.textContent = "Create Account";
         }
       });
