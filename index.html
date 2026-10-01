@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- পৃষ্ঠার মেটাডেটা ও ব্রাউজার ট্যাবের শিরোনাম -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#173f36" />
@@ -10,6 +11,7 @@
     />
     <title>English Sikho | Learn a little, every day</title>
 
+    <!-- সাইটের আইকন, ফন্ট, UI লাইব্রেরি ও Tailwind CSS -->
     <link rel="shortcut icon" href="./assets/logo.svg" type="image/svg+xml" />
 
     <link
@@ -33,7 +35,7 @@
 
     <link rel="stylesheet" href="./style/style.css" />
 
-    <!-- Login protection -->
+    <!-- লগইন না থাকলে ব্যবহারকারীকে লগইন পাতায় পাঠায় -->
     <script>
       if (localStorage.getItem("isLoggedIn") !== "true") {
         window.location.replace("login.html");
@@ -42,6 +44,7 @@
   </head>
 
   <body>
+    <!-- সাইটের মূল নেভিগেশন ও মোবাইল মেনু -->
     <header>
       <div class="navbar site-nav px-4 md:px-8">
         <div class="navbar-start">
@@ -51,7 +54,7 @@
               aria-label="Open navigation"
               aria-expanded="false"
               aria-controls="mobile-navigation"
-              class="btn btn-ghost lg:hidden"
+              class="grid size-10 place-items-center rounded border border-transparent bg-transparent text-lg text-[#173f36] transition hover:bg-[#e9eee4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64] lg:hidden"
             >
               <i class="fa-solid fa-bars text-lg"></i>
             </button>
@@ -95,25 +98,37 @@
           </a>
         </div>
 
-        <div class="navbar-end hidden lg:flex">
-          <ul class="menu menu-horizontal px-1 space-x-2">
+        <div class="hidden lg:flex">
+          <ul class="">
             <li>
-              <a href="#faq" class="btn btn-ghost nav-link">
+              <a
+                href="#faq"
+                class="inline-flex min-h-10 items-center gap-2 rounded px-3 text-[13px] font-semibold text-[#45574c] transition hover:bg-[#e9eee4] hover:text-[#173f36] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
+              >
                 <i class="fa-solid fa-circle-question"></i> FAQ
               </a>
             </li>
             <li>
-              <a href="#learn" class="btn btn-ghost nav-link">
+              <a
+                href="#learn"
+                class="inline-flex min-h-10 items-center gap-2 rounded px-3 text-[13px] font-semibold text-[#45574c] transition hover:bg-[#e9eee4] hover:text-[#173f36] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
+              >
                 <i class="fa-solid fa-book-open"></i> Learn
               </a>
             </li>
             <li>
-              <a href="#practice" class="btn btn-ghost nav-link">
+              <a
+                href="#practice"
+                class="inline-flex min-h-10 items-center gap-2 rounded px-3 text-[13px] font-semibold text-[#45574c] transition hover:bg-[#e9eee4] hover:text-[#173f36] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
+              >
                 <i class="fa-solid fa-brain"></i> Practice
               </a>
             </li>
             <li>
-              <a href="#saved" class="btn btn-ghost nav-link">
+              <a
+                href="#saved"
+                class="inline-flex min-h-10 items-center gap-2 rounded px-3 text-[13px] font-semibold text-[#45574c] transition hover:bg-[#e9eee4] hover:text-[#173f36] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
+              >
                 <i class="fa-solid fa-bookmark"></i> Saved Words
               </a>
             </li>
@@ -121,7 +136,7 @@
               <a
                 href="#"
                 onclick="logout(); return false;"
-                class="btn btn-outline logout-link"
+                class="inline-flex min-h-10 items-center gap-2 rounded border border-[#bac8bc] px-3 text-[13px] font-semibold text-[#173f36] transition hover:border-[#b7c7b8] hover:bg-[#eaf0e7] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
               >
                 <i class="fa-solid fa-arrow-right-from-bracket"></i> LogOut
               </a>
@@ -132,6 +147,7 @@
     </header>
 
     <main>
+      <!-- স্বাগত বার্তা, শেখা শুরুর লিংক ও ধারাবাহিক শেখার দিনের সংখ্যা -->
       <section class="hero-shell page-width" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="hero-kicker"><span></span> YOUR DAILY ENGLISH RITUAL</p>
@@ -144,7 +160,9 @@
             ইংরেজি হয়ে উঠুক আপনার নিজের ভাষা।
           </p>
           <div class="hero-actions">
-            <a href="#learn" class="btn btn-accent"
+            <a
+              href="#learn"
+              class="inline-flex min-h-12 items-center justify-center gap-2 rounded border border-[#c5dc70] bg-[#d7ed83] px-5 text-sm font-bold text-[#20392d] shadow-sm transition hover:-translate-y-px hover:border-[#b7d05d] hover:bg-[#e6f4ad] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
               ><i class="fa-solid fa-arrow-right"></i> আজকের শেখা শুরু করুন</a
             >
             <a href="#practice" class="hero-text-link"
@@ -180,6 +198,7 @@
         <span class="hero-index">01 <i></i> 06</span>
       </section>
 
+      <!-- শেখা ও সংরক্ষিত শব্দের হিসাব এবং মোট অগ্রগতি -->
       <section
         class="progress-section page-width py-5"
         aria-labelledby="progress-title"
@@ -241,6 +260,7 @@
         </div>
       </section>
 
+      <!-- আজকের শব্দ ও দৈনিক শেখার লক্ষ্য -->
       <section
         class="daily-section page-width my-8"
         aria-labelledby="daily-title"
@@ -275,7 +295,7 @@
             <button
               id="daily-learned"
               type="button"
-              class="btn btn-accent self-start md:self-center"
+              class="inline-flex min-h-12 items-center justify-center gap-2 rounded border border-[#c5dc70] bg-[#d7ed83] px-5 text-sm font-bold text-[#20392d] shadow-sm transition hover:-translate-y-px hover:border-[#b7d05d] hover:bg-[#e6f4ad] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64] disabled:cursor-not-allowed disabled:border-[#d8ded5] disabled:bg-[#e8ece5] disabled:text-[#68756a] disabled:opacity-100 md:self-center"
             >
               <i class="fa-solid fa-check"></i> Mark as learned
             </button>
@@ -283,6 +303,7 @@
         </div>
       </section>
 
+      <!-- index.js-এর lesson data থেকে lesson button তৈরি হয় -->
       <section id="learn" class="py-10">
         <div class="section-heading">
           <p class="section-kicker">BUILD YOUR VOCABULARY</p>
@@ -298,6 +319,7 @@
         ></div>
       </section>
 
+      <!-- শব্দ খোঁজার input ও search মুছে ফেলার button -->
       <section class="search-section page-width flex justify-center px-4">
         <div class="search-box">
           <label class="search-input-wrap">
@@ -309,18 +331,23 @@
               placeholder="Search Vocabulary Now"
               autocomplete="off" /><button
               id="clear-search"
-              class="icon-button clear-search hidden"
+              class="clear-search hidden size-[30px] shrink-0 place-items-center rounded-full bg-transparent text-[#69766e] transition hover:bg-[#eef2e9] hover:text-[#173f36] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
               type="button"
               aria-label="Clear search"
               title="Clear search"
             >
               <i class="fa-solid fa-xmark"></i></button></label
-          ><button id="btn-search" type="button" class="btn btn-primary">
+          ><button
+            id="btn-search"
+            type="button"
+            class="inline-flex min-h-12 items-center justify-center gap-2 rounded border border-[#173f36] bg-[#173f36] px-5 text-xs font-bold text-white shadow-sm transition hover:-translate-y-px hover:border-[#27584b] hover:bg-[#27584b] hover:shadow-md active:translate-y-px active:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64] disabled:cursor-not-allowed disabled:border-[#d8ded5] disabled:bg-[#e8ece5] disabled:text-[#68756a]"
+          >
             <i class="fa-solid fa-magnifying-glass"></i><span>Search</span>
           </button>
         </div>
       </section>
 
+      <!-- শব্দ filter, ফলাফলের সংখ্যা ও এলোমেলো শব্দ দেখার button -->
       <section
         class="vocab-toolbar page-width"
         aria-label="Vocabulary controls"
@@ -328,7 +355,7 @@
         <div class="filter-group" role="group" aria-label="Filter vocabulary">
           <button
             type="button"
-            class="filter-button active"
+            class="filter-button rounded border border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-[#68756c] transition hover:bg-[#e9eee4] hover:text-[#173f36] aria-pressed:border-[#dce5d8] aria-pressed:bg-white aria-pressed:text-[#173f36] aria-pressed:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
             data-filter="all"
             aria-pressed="true"
           >
@@ -336,7 +363,7 @@
           </button>
           <button
             type="button"
-            class="filter-button"
+            class="filter-button rounded border border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-[#68756c] transition hover:bg-[#e9eee4] hover:text-[#173f36] aria-pressed:border-[#dce5d8] aria-pressed:bg-white aria-pressed:text-[#173f36] aria-pressed:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
             data-filter="unlearned"
             aria-pressed="false"
           >
@@ -344,7 +371,7 @@
           </button>
           <button
             type="button"
-            class="filter-button"
+            class="filter-button rounded border border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-[#68756c] transition hover:bg-[#e9eee4] hover:text-[#173f36] aria-pressed:border-[#dce5d8] aria-pressed:bg-white aria-pressed:text-[#173f36] aria-pressed:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
             data-filter="saved"
             aria-pressed="false"
           >
@@ -353,12 +380,17 @@
         </div>
         <div class="results-tools">
           <p id="results-count" aria-live="polite">0 words</p>
-          <button id="random-word" type="button" class="random-word-button">
+          <button
+            id="random-word"
+            type="button"
+            class="inline-flex min-h-9 items-center gap-2 rounded border border-[#d9e1d6] bg-white px-3 text-[11px] font-bold text-[#173f36] transition hover:border-[#173f36] hover:bg-[#f3f7ed] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
+          >
             <i class="fa-solid fa-shuffle"></i> Surprise me
           </button>
         </div>
       </section>
 
+      <!-- শব্দের ফলাফল প্রস্তুত হওয়ার সময় loading indicator -->
       <section
         id="spinner"
         class="flex justify-center items-center py-10 hidden"
@@ -366,6 +398,7 @@
         <span class="loading loading-bars loading-xl"></span>
       </section>
 
+      <!-- নির্বাচিত lesson ও filter অনুযায়ী শব্দের card এখানে দেখানো হয় -->
       <section
         id="word-container"
         class="word-grid page-width p-5 md:p-10 mx-auto my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
@@ -380,6 +413,7 @@
         </div>
       </section>
 
+      <!-- বহুনির্বাচনী quiz ও quiz-এর score -->
       <section
         id="practice"
         class="w-11/12 mx-auto py-8 scroll-mt-6"
@@ -414,13 +448,17 @@
               aria-live="polite"
             ></p>
             <div class="flex gap-3 mt-3">
-              <button id="quiz-start" type="button" class="btn btn-primary">
+              <button
+                id="quiz-start"
+                type="button"
+                class="inline-flex min-h-10 items-center justify-center gap-2 rounded border border-[#173f36] bg-[#173f36] px-4 text-xs font-bold text-white shadow-sm transition hover:-translate-y-px hover:border-[#27584b] hover:bg-[#27584b] hover:shadow-md active:translate-y-px active:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
+              >
                 <i class="fa-solid fa-play"></i> Start practice
               </button>
               <button
                 id="quiz-next"
                 type="button"
-                class="btn btn-outline btn-primary hidden"
+                class="hidden min-h-10 items-center justify-center gap-2 rounded border border-[#173f36] bg-white px-4 text-xs font-bold text-[#173f36] transition hover:bg-[#edf3e9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
               >
                 Next question <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -429,6 +467,7 @@
         </div>
       </section>
 
+      <!-- learner-এর review করার জন্য সংরক্ষিত শব্দের তালিকা -->
       <section
         id="saved"
         class="w-11/12 mx-auto py-8 scroll-mt-6"
@@ -451,17 +490,23 @@
         ></div>
       </section>
 
+      <!-- নির্বাচিত শব্দের অর্থ ও উদাহরণ দেখানোর dialog -->
       <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box">
           <div id="details-container" class="space-y-5"></div>
           <div class="modal-action">
             <form method="dialog">
-              <button class="btn">Close</button>
+              <button
+                class="inline-flex min-h-10 items-center justify-center rounded border border-[#d8e0d7] bg-[#f4f6f1] px-4 text-xs font-bold text-[#46564b] transition hover:border-[#b9c8bd] hover:bg-[#e9eee4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]"
+              >
+                Close
+              </button>
             </form>
           </div>
         </div>
       </dialog>
 
+      <!-- lesson ও শেখার অগ্রগতি নিয়ে সাধারণ প্রশ্নের উত্তর -->
       <section id="faq" class="w-11/12 mx-auto pb-12 text-center">
         <h2 class="text-3xl font-bold mb-4">FAQ</h2>
         <div class="max-w-2xl mx-auto text-left space-y-2">

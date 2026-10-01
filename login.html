@@ -21,6 +21,7 @@
 </head>
 
 <body class="bg-white min-h-screen">
+  <!-- login form এবং account তথ্য লেখার ঘর -->
   <main class="w-full flex justify-center px-4 pt-4 pb-5">
     <div class="w-full max-w-[445px]">
 
@@ -125,6 +126,7 @@
     </div>
   </main>
 
+  <!-- আগে login করা থাকলে dashboard-এ পাঠায়; নইলে demo login সামলায় -->
   <script>
     // Already logged in হলে login page না দেখিয়ে index এ পাঠাবে
     if (localStorage.getItem("isLoggedIn") === "true") {

@@ -1,3 +1,4 @@
+// প্রতিটি lesson-এ lesson-এর নাম এবং ইংরেজি শব্দ, বাংলা অর্থ ও উদাহরণ থাকে।
 const lessons = [
   {
     id: 1,
@@ -177,70 +178,191 @@ const lessons = [
     id: 7,
     title: "Travel & places",
     words: [
-      { word: "Explore", meaning: "অন্বেষণ করা", example: "We explored the old town on foot." },
-      { word: "Guide", meaning: "পথপ্রদর্শক", example: "Our guide showed us the museum." },
-      { word: "Local", meaning: "স্থানীয়", example: "We tried a local dish in the village." },
-      { word: "Route", meaning: "পথ", example: "This route takes us to the river." },
-      { word: "Transport", meaning: "যাতায়াত", example: "Public transport is easy to find here." },
+      {
+        word: "Explore",
+        meaning: "অন্বেষণ করা",
+        example: "We explored the old town on foot.",
+      },
+      {
+        word: "Guide",
+        meaning: "পথপ্রদর্শক",
+        example: "Our guide showed us the museum.",
+      },
+      {
+        word: "Local",
+        meaning: "স্থানীয়",
+        example: "We tried a local dish in the village.",
+      },
+      {
+        word: "Route",
+        meaning: "পথ",
+        example: "This route takes us to the river.",
+      },
+      {
+        word: "Transport",
+        meaning: "যাতায়াত",
+        example: "Public transport is easy to find here.",
+      },
     ],
   },
   {
     id: 8,
     title: "Food & cooking",
     words: [
-      { word: "Boil", meaning: "সিদ্ধ করা", example: "Boil the water before making tea." },
-      { word: "Delicious", meaning: "সুস্বাদু", example: "The soup smells delicious." },
-      { word: "Ingredient", meaning: "উপকরণ", example: "Fresh vegetables are the main ingredient." },
-      { word: "Recipe", meaning: "রান্নার পদ্ধতি", example: "I found a simple recipe for bread." },
-      { word: "Serve", meaning: "পরিবেশন করা", example: "They serve lunch at one o'clock." },
+      {
+        word: "Boil",
+        meaning: "সিদ্ধ করা",
+        example: "Boil the water before making tea.",
+      },
+      {
+        word: "Delicious",
+        meaning: "সুস্বাদু",
+        example: "The soup smells delicious.",
+      },
+      {
+        word: "Ingredient",
+        meaning: "উপকরণ",
+        example: "Fresh vegetables are the main ingredient.",
+      },
+      {
+        word: "Recipe",
+        meaning: "রান্নার পদ্ধতি",
+        example: "I found a simple recipe for bread.",
+      },
+      {
+        word: "Serve",
+        meaning: "পরিবেশন করা",
+        example: "They serve lunch at one o'clock.",
+      },
     ],
   },
   {
     id: 9,
     title: "Nature & weather",
     words: [
-      { word: "Breeze", meaning: "মৃদু বাতাস", example: "A cool breeze came through the window." },
-      { word: "Cloud", meaning: "মেঘ", example: "A dark cloud covered the sun." },
-      { word: "Forest", meaning: "অরণ্য", example: "Many birds live in the forest." },
-      { word: "Fresh", meaning: "তাজা", example: "We bought fresh fruit at the market." },
-      { word: "Season", meaning: "ঋতু", example: "Spring is my favourite season." },
+      {
+        word: "Breeze",
+        meaning: "মৃদু বাতাস",
+        example: "A cool breeze came through the window.",
+      },
+      {
+        word: "Cloud",
+        meaning: "মেঘ",
+        example: "A dark cloud covered the sun.",
+      },
+      {
+        word: "Forest",
+        meaning: "অরণ্য",
+        example: "Many birds live in the forest.",
+      },
+      {
+        word: "Fresh",
+        meaning: "তাজা",
+        example: "We bought fresh fruit at the market.",
+      },
+      {
+        word: "Season",
+        meaning: "ঋতু",
+        example: "Spring is my favourite season.",
+      },
     ],
   },
   {
     id: 10,
     title: "Speak & connect",
     words: [
-      { word: "Agree", meaning: "সম্মত হওয়া", example: "I agree with your idea." },
-      { word: "Describe", meaning: "বর্ণনা করা", example: "Please describe what you saw." },
-      { word: "Invite", meaning: "আমন্ত্রণ জানানো", example: "We will invite our neighbours to dinner." },
-      { word: "Mention", meaning: "উল্লেখ করা", example: "She forgot to mention the meeting." },
-      { word: "Reply", meaning: "জবাব দেওয়া", example: "Please reply to my message." },
+      {
+        word: "Agree",
+        meaning: "সম্মত হওয়া",
+        example: "I agree with your idea.",
+      },
+      {
+        word: "Describe",
+        meaning: "বর্ণনা করা",
+        example: "Please describe what you saw.",
+      },
+      {
+        word: "Invite",
+        meaning: "আমন্ত্রণ জানানো",
+        example: "We will invite our neighbours to dinner.",
+      },
+      {
+        word: "Mention",
+        meaning: "উল্লেখ করা",
+        example: "She forgot to mention the meeting.",
+      },
+      {
+        word: "Reply",
+        meaning: "জবাব দেওয়া",
+        example: "Please reply to my message.",
+      },
     ],
   },
   {
     id: 11,
     title: "Goals & growth",
     words: [
-      { word: "Achieve", meaning: "অর্জন করা", example: "You can achieve your goal with practice." },
-      { word: "Challenge", meaning: "প্রতিদ্বন্দ্বিতা", example: "Learning a new skill is a fun challenge." },
-      { word: "Focus", meaning: "মনোযোগ দেওয়া", example: "Try to focus on one task at a time." },
-      { word: "Goal", meaning: "উদ্দেশ্য", example: "My goal is to speak English clearly." },
-      { word: "Success", meaning: "সাফল্য", example: "Small habits can lead to success." },
+      {
+        word: "Achieve",
+        meaning: "অর্জন করা",
+        example: "You can achieve your goal with practice.",
+      },
+      {
+        word: "Challenge",
+        meaning: "প্রতিদ্বন্দ্বিতা",
+        example: "Learning a new skill is a fun challenge.",
+      },
+      {
+        word: "Focus",
+        meaning: "মনোযোগ দেওয়া",
+        example: "Try to focus on one task at a time.",
+      },
+      {
+        word: "Goal",
+        meaning: "উদ্দেশ্য",
+        example: "My goal is to speak English clearly.",
+      },
+      {
+        word: "Success",
+        meaning: "সাফল্য",
+        example: "Small habits can lead to success.",
+      },
     ],
   },
   {
     id: 12,
     title: "Time & routines",
     words: [
-      { word: "Continue", meaning: "চালিয়ে যাওয়া", example: "Continue reading for ten minutes." },
-      { word: "Early", meaning: "আগেভাগে", example: "He wakes up early every morning." },
-      { word: "Habit", meaning: "অভ্যাস", example: "Reading is a helpful habit." },
-      { word: "Regular", meaning: "নিয়মিত", example: "Regular practice builds confidence." },
-      { word: "Schedule", meaning: "সময়সূচি", example: "I wrote my lessons in a schedule." },
+      {
+        word: "Continue",
+        meaning: "চালিয়ে যাওয়া",
+        example: "Continue reading for ten minutes.",
+      },
+      {
+        word: "Early",
+        meaning: "আগেভাগে",
+        example: "He wakes up early every morning.",
+      },
+      {
+        word: "Habit",
+        meaning: "অভ্যাস",
+        example: "Reading is a helpful habit.",
+      },
+      {
+        word: "Regular",
+        meaning: "নিয়মিত",
+        example: "Regular practice builds confidence.",
+      },
+      {
+        word: "Schedule",
+        meaning: "সময়সূচি",
+        example: "I wrote my lessons in a schedule.",
+      },
     ],
   },
 ];
 
+// পৃষ্ঠার প্রয়োজনীয় element এবং বর্তমান lesson, filter ও search-এর অবস্থা রাখা হয়।
 const levelContainer = document.getElementById("level-container");
 const wordContainer = document.getElementById("word-container");
 const savedContainer = document.getElementById("saved-container");
@@ -260,6 +382,7 @@ let sourceWords = allWords;
 let activeFilter = "all";
 let searchQuery = "";
 
+// browser localStorage থেকে শেখা/সংরক্ষিত শব্দ নিরাপদে পড়া ও লেখা হয়।
 function getWordList(storageKey) {
   try {
     const words = JSON.parse(localStorage.getItem(storageKey) || "[]");
@@ -273,6 +396,7 @@ function setWordList(storageKey, words) {
   localStorage.setItem(storageKey, JSON.stringify(words));
 }
 
+// dashboard-এর শব্দের হিসাব, দৈনিক লক্ষ্য, streak ও quiz score হালনাগাদ করে।
 function updateProgress() {
   const learnedWords = getWordList("learnedWords");
   const savedWords = getWordList("savedWords");
@@ -298,6 +422,7 @@ function updateProgress() {
     localStorage.getItem("quizRound") || "0";
 }
 
+// স্থানীয় তারিখ ধরে দৈনিক শেখা ও ধারাবাহিক দিনের হিসাব করা হয়।
 function getDateKey(date = new Date()) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -344,6 +469,7 @@ function recordLearningActivity(word) {
     setWordList("todayLearnedWords", [...todayWords, word]);
 }
 
+// সংরক্ষিত শব্দের card দেখায় এবং তালিকা বদলালে তা আবার আঁকে।
 function renderSavedWords() {
   const savedWords = getWordList("savedWords");
   const savedItems = allWords.filter((item) => savedWords.includes(item.word));
@@ -377,6 +503,7 @@ function toggleWordList(storageKey, word) {
   renderDailyWord();
 }
 
+// lesson, search ও saved list-এ ব্যবহারের জন্য একটি শব্দের card তৈরি করে।
 function renderWordCard(item) {
   const saved = getWordList("savedWords").includes(item.word);
   const learned = getWordList("learnedWords").includes(item.word);
@@ -384,24 +511,25 @@ function renderWordCard(item) {
 
   return `
     <article class="word-card">
-      <h3>${item.word}</h3><button class="speak-word" type="button" data-word-action="speak" data-word="${safeWord}" aria-label="Hear ${safeWord}" title="Hear pronunciation"><i class="fa-solid fa-volume-high"></i></button>
+      <h3>${item.word}</h3><button class="grid size-[30px] place-items-center rounded-full border border-[#dce5db] bg-white text-[#173f36] transition hover:border-[#173f36] hover:bg-[#edf3e9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]" type="button" data-word-action="speak" data-word="${safeWord}" aria-label="Hear ${safeWord}" title="Hear pronunciation"><i class="fa-solid fa-volume-high"></i></button>
       <p class="font-bangla word-meaning">${item.meaning}</p>
       <p class="word-example">${item.example}</p>
       <div class="flex flex-wrap gap-2 mt-4">
-        <button type="button" class="btn btn-sm btn-outline btn-primary" data-word-action="save" data-word="${safeWord}" aria-pressed="${saved}">
+        <button type="button" class="inline-flex min-h-[33px] items-center justify-center gap-2 rounded border px-3 text-[11px] font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64] ${saved ? "border-[#a6cbb1] bg-[#e7f2e9] text-[#245c38] hover:border-[#75a986] hover:bg-[#d8ebdc]" : "border-[#b9c8bd] bg-white text-[#173f36] hover:border-[#173f36] hover:bg-[#edf3e9]"}" data-word-action="save" data-word="${safeWord}" aria-pressed="${saved}">
           <i class="fa-solid fa-bookmark"></i> ${saved ? "Saved" : "Save for review"}
         </button>
-        <button type="button" class="btn btn-sm ${learned ? "btn-success" : "btn-ghost"}" data-word-action="learn" data-word="${safeWord}" aria-pressed="${learned}">
+        <button type="button" class="inline-flex min-h-[33px] items-center justify-center gap-2 rounded border px-3 text-[11px] font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64] ${learned ? "border-[#a6cbb1] bg-[#e7f2e9] text-[#245c38] hover:border-[#75a986] hover:bg-[#d8ebdc]" : "border-transparent bg-transparent text-[#45574c] hover:border-[#dce5d8] hover:bg-[#eaf0e7]"}" data-word-action="learn" data-word="${safeWord}" aria-pressed="${learned}">
           <i class="fa-solid fa-check"></i> ${learned ? "Learned" : "Mark learned"}
         </button>
       </div>
-      <button type="button" class="btn btn-sm btn-primary mt-3" data-word-action="details" data-word="${safeWord}">
+      <button type="button" class="mt-3 inline-flex min-h-[33px] items-center justify-center gap-2 rounded border border-[#173f36] bg-[#173f36] px-3 text-[11px] font-semibold text-white shadow-sm transition hover:-translate-y-px hover:border-[#27584b] hover:bg-[#27584b] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]" data-word-action="details" data-word="${safeWord}">
         Details
       </button>
     </article>
   `;
 }
 
+// আজকের শব্দ দেখায় এবং button-টি শেখা শব্দের তালিকার সঙ্গে যুক্ত করে।
 function renderDailyWord() {
   const dayNumber = Math.floor(Date.now() / 86400000);
   const item = allWords[dayNumber % allWords.length];
@@ -420,6 +548,7 @@ function renderDailyWord() {
   };
 }
 
+// browser-এর speech synthesis দিয়ে ইংরেজি শব্দটি উচ্চারণ করে শোনায়।
 function speakWord(word) {
   if (!("speechSynthesis" in window)) return;
   window.speechSynthesis.cancel();
@@ -429,6 +558,7 @@ function speakWord(word) {
   window.speechSynthesis.speak(utterance);
 }
 
+// একটি শব্দ বেছে quiz প্রশ্ন ও তার উত্তরগুলোর button তৈরি করে।
 function startPractice() {
   quizWord = allWords[Math.floor(Math.random() * allWords.length)];
   quizOptions = [quizWord.meaning];
@@ -445,7 +575,7 @@ function startPractice() {
   document.getElementById("quiz-options").innerHTML = quizOptions
     .map(
       (meaning, index) => `
-    <button type="button" class="btn btn-outline justify-start font-bangla" data-answer="${index}">${meaning}</button>
+    <button type="button" class="inline-flex min-h-[46px] items-center justify-start rounded border border-[#dfe5db] bg-white px-4 text-left text-sm text-[#38483f] transition hover:border-[#173f36] hover:bg-[#f3f7ed] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64] disabled:cursor-default disabled:opacity-100 font-bangla" data-answer="${index}">${meaning}</button>
   `,
     )
     .join("");
@@ -461,6 +591,7 @@ function startPractice() {
   });
 }
 
+// নির্বাচিত উত্তর যাচাই করে score ও সঠিক/ভুলের বার্তা দেখায়।
 function checkAnswer(selectedIndex) {
   const isCorrect = quizOptions[selectedIndex] === quizWord.meaning;
   const answered = Number(localStorage.getItem("quizRound") || 0) + 1;
@@ -477,19 +608,29 @@ function checkAnswer(selectedIndex) {
   document.querySelectorAll("[data-answer]").forEach((button) => {
     button.disabled = true;
     if (button.textContent === quizWord.meaning) {
-      button.classList.add("answer-correct");
+      button.classList.add(
+        "border-[#3b8060]",
+        "bg-[#e8f4eb]",
+        "text-[#20573a]",
+      );
     } else if (Number(button.dataset.answer) === selectedIndex) {
-      button.classList.add("answer-incorrect");
+      button.classList.add(
+        "border-[#d16c58]",
+        "bg-[#fff0eb]",
+        "text-[#9b4536]",
+      );
     }
   });
   document.getElementById("quiz-next").classList.remove("hidden");
 }
 
+// lesson তালিকা থেকে lesson বেছে নেওয়ার button তৈরি করে।
 function renderLessons() {
   levelContainer.innerHTML = [
-    `<button type="button" class="btn" data-lesson="all">All ${allWords.length} words</button>`,
+    `<button type="button" aria-pressed="false" class="inline-flex min-h-10 items-center justify-center rounded border border-[#d8e0d4] bg-white px-4 text-xs font-semibold text-[#45564c] shadow-sm transition hover:border-[#173f36] hover:bg-[#173f36] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]" data-lesson="all">All ${allWords.length} words</button>`,
     ...lessons.map(
-      (lesson) => `<button type="button" class="btn" data-lesson="${lesson.id}">${lesson.title}</button>`,
+      (lesson) =>
+        `<button type="button" aria-pressed="false" class="inline-flex min-h-10 items-center justify-center rounded border border-[#d8e0d4] bg-white px-4 text-xs font-semibold text-[#45564c] shadow-sm transition hover:border-[#173f36] hover:bg-[#173f36] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]" data-lesson="${lesson.id}">${lesson.title}</button>`,
     ),
   ].join("");
   levelContainer.addEventListener("click", (event) => {
@@ -498,19 +639,27 @@ function renderLessons() {
   });
 }
 
+// নির্বাচিত lesson-এর শব্দ দেখায় এবং সেই lesson button-কে চিহ্নিত করে।
 function selectLesson(id) {
-  const lesson = id === "all" ? null : lessons.find((item) => item.id === Number(id));
+  const lesson =
+    id === "all" ? null : lessons.find((item) => item.id === Number(id));
   if (id !== "all" && !lesson) return;
 
   sourceWords = lesson ? lesson.words : allWords;
   searchQuery = "";
   searchInput.value = "";
   clearSearchButton.classList.add("hidden");
-  document.querySelectorAll("#level-container [data-lesson]").forEach((button) => {
-    const isActive = button.dataset.lesson === String(id);
-    button.classList.toggle("active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
+  document
+    .querySelectorAll("#level-container [data-lesson]")
+    .forEach((button) => {
+      const isActive = button.dataset.lesson === String(id);
+      button.classList.toggle("active", isActive);
+      button.classList.toggle("border-[#173f36]", isActive);
+      button.classList.toggle("bg-[#173f36]", isActive);
+      button.classList.toggle("text-white", isActive);
+      button.classList.toggle("shadow-md", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
   renderFilteredWords();
 }
 
@@ -519,6 +668,7 @@ function renderWords(words) {
   renderFilteredWords();
 }
 
+// card দেখানোর আগে search ও saved/unlearned filter প্রয়োগ করে।
 function renderFilteredWords() {
   const savedWords = getWordList("savedWords");
   const learnedWords = getWordList("learnedWords");
@@ -540,14 +690,17 @@ function renderFilteredWords() {
       <div class="empty-results col-span-full font-bangla">
         <i class="fa-solid fa-magnifying-glass"></i>
         <p>এই filter-এ কোনো শব্দ পাওয়া যায়নি।</p>
-        <button type="button" class="btn btn-primary" data-reset-vocabulary>সব শব্দ দেখুন</button>
+        <button type="button" class="inline-flex min-h-10 items-center justify-center rounded border border-[#173f36] bg-[#173f36] px-4 text-xs font-bold text-white shadow-sm transition hover:-translate-y-px hover:border-[#27584b] hover:bg-[#27584b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64]" data-reset-vocabulary>সব শব্দ দেখুন</button>
       </div>
     `;
     return;
   }
-  wordContainer.innerHTML = visibleWords.map((item) => renderWordCard(item)).join("");
+  wordContainer.innerHTML = visibleWords
+    .map((item) => renderWordCard(item))
+    .join("");
 }
 
+// শব্দের বিস্তারিত dialog-এ তথ্য বসিয়ে সেটি খোলে।
 function showDetails(word, meaning, example) {
   const heading = document.createElement("h2");
   heading.className = "text-3xl font-bold";
@@ -561,18 +714,22 @@ function showDetails(word, meaning, example) {
   document.getElementById("word_modal").showModal();
 }
 
+// সব lesson-এ ইংরেজি শব্দ বা বাংলা অর্থ খোঁজে।
 function searchVocabulary() {
   sourceWords = allWords;
   searchQuery = searchInput.value.trim().toLocaleLowerCase();
   clearSearchButton.classList.toggle("hidden", !searchQuery);
-  document.querySelectorAll("#level-container [data-lesson]").forEach((button) => {
-    const isActive = button.dataset.lesson === "all" && !searchQuery;
-    button.classList.toggle("active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
+  document
+    .querySelectorAll("#level-container [data-lesson]")
+    .forEach((button) => {
+      const isActive = button.dataset.lesson === "all" && !searchQuery;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
   renderFilteredWords();
 }
 
+// filter ও lesson reset করে সব শব্দ আবার দেখায়।
 function resetVocabulary() {
   activeFilter = "all";
   filterButtons.forEach((button) => {
@@ -583,11 +740,19 @@ function resetVocabulary() {
   selectLesson("all");
 }
 
+// HTML attribute-এ বসানোর আগে text-এর বিশেষ character escape করে।
 function escapeHtml(value) {
-  const entities = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+  const entities = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  };
   return String(value).replace(/[&<>"']/g, (character) => entities[character]);
 }
 
+// search, filter, card ও mobile navigation-এর event handler যুক্ত করে।
 function wireVocabularyControls() {
   searchInput.addEventListener("input", searchVocabulary);
   clearSearchButton.addEventListener("click", () => {
@@ -608,15 +773,20 @@ function wireVocabularyControls() {
   });
   wordContainer.addEventListener("click", (event) => {
     if (event.target.closest("[data-reset-vocabulary]")) resetVocabulary();
+    else handleWordAction(event);
   });
+  savedContainer.addEventListener("click", handleWordAction);
   randomWordButton.addEventListener("click", () => {
     const choices = visibleWords.length ? visibleWords : allWords;
     const item = choices[Math.floor(Math.random() * choices.length)];
     showDetails(item.word, item.meaning, item.example);
   });
-  const mobileMenuButton = document.querySelector("[aria-controls='mobile-navigation']");
+  const mobileMenuButton = document.querySelector(
+    "[aria-controls='mobile-navigation']",
+  );
   mobileMenuButton.addEventListener("click", () => {
-    const isExpanded = mobileMenuButton.getAttribute("aria-expanded") === "true";
+    const isExpanded =
+      mobileMenuButton.getAttribute("aria-expanded") === "true";
     mobileMenuButton.setAttribute("aria-expanded", String(!isExpanded));
     if (isExpanded) mobileMenuButton.blur();
   });
@@ -634,6 +804,29 @@ function wireVocabularyControls() {
   });
 }
 
+// card-এ click হলে pronunciation, save, learn বা details action চালায়।
+function handleWordAction(event) {
+  const button = event.target.closest("[data-word-action]");
+  if (!button) return;
+  const item = allWords.find((word) => word.word === button.dataset.word);
+  if (!item) return;
+
+  switch (button.dataset.wordAction) {
+    case "speak":
+      speakWord(item.word);
+      break;
+    case "save":
+      toggleWordList("savedWords", item.word);
+      break;
+    case "learn":
+      toggleWordList("learnedWords", item.word);
+      break;
+    case "details":
+      showDetails(item.word, item.meaning, item.example);
+      break;
+  }
+}
+
 searchButton.addEventListener("click", searchVocabulary);
 
 searchInput.addEventListener("keydown", (event) => {
@@ -642,6 +835,7 @@ searchInput.addEventListener("keydown", (event) => {
   }
 });
 
+// demo login-এর session মুছে login পাতায় ফিরিয়ে নেয়।
 function logout() {
   localStorage.removeItem("isLoggedIn");
   localStorage.removeItem("username");
@@ -650,6 +844,7 @@ function logout() {
   window.location.replace("login.html");
 }
 
+// page element ও lesson data প্রস্তুত হলে dashboard চালু করে।
 const learnerName =
   localStorage.getItem("fullName") ||
   localStorage.getItem("username") ||
