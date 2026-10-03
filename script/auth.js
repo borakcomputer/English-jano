@@ -1,36 +1,11 @@
-const ACCOUNT_STORAGE_KEY = "englishSikhoAccounts";
-const PASSWORD_ITERATIONS = 150000;
+const API_BASE = "/api";
 
-function getAccounts() {
-  try {
-    const accounts = JSON.parse(localStorage.getItem(ACCOUNT_STORAGE_KEY) || "[]");
-    return Array.isArray(accounts) ? accounts : [];
-  } catch {
-    return [];
-  }
+function isConfigured() {
+  return window.location.protocol === "http:" || window.location.protocol === "https:";
 }
 
-function toHex(bytes) {
-  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
-}
-
-async function hashPassword(password, saltHex) {
-  const salt = Uint8Array.from(saltHex.match(/.{2}/g), (byte) =>
-    Number.parseInt(byte, 16),
-  );
-  const key = await crypto.subtle.importKey(
-    "raw",
-    new TextEncoder().encode(password),
-    "PBKDF2",
-    false,
-    ["deriveBits"],
-  );
-  const derivedBits = await crypto.subtle.deriveBits(
-    { name: "PBKDF2", salt, iterations: PASSWORD_ITERATIONS, hash: "SHA-256" },
-    key,
-    256,
-  );
-  return toHex(new Uint8Array(derivedBits));
+function getConfigurationError() {
+  return "Login API চালু নেই। terminal-এ npm start চালিয়ে http://localhost:3000 খুলুন।";
 }
 
 function isPasswordValid(password) {
@@ -44,63 +19,106 @@ function isPasswordValid(password) {
   );
 }
 
-function hasActiveAccount() {
-  const accountId = localStorage.getItem("accountId");
-  return Boolean(
-    accountId && getAccounts().some((account) => account.id === accountId),
+function togglePasswordVisibility(button) {
+  const input = document.getElementById(button.dataset.passwordTarget);
+  const showPassword = input.type === "password";
+  input.type = showPassword ? "text" : "password";
+  button.setAttribute("aria-pressed", String(showPassword));
+  button.setAttribute(
+    "aria-label",
+    showPassword ? "Hide password" : "Show password",
   );
+  button
+    .querySelector("[data-eye-open]")
+    .classList.toggle("hidden", showPassword);
+  button
+    .querySelector("[data-eye-closed]")
+    .classList.toggle("hidden", !showPassword);
 }
 
-async function registerAccount({ fullName, email, username, password }) {
-  const accounts = getAccounts();
-  const normalizedEmail = email.trim().toLowerCase();
-  const normalizedUsername = username.trim().toLowerCase();
-  const accountExists = accounts.some(
-    (account) =>
-      account.email.toLowerCase() === normalizedEmail ||
-      account.username.toLowerCase() === normalizedUsername,
-  );
+async function apiRequest(path, options = {}) {
+  let response;
+  try {
+    response = await fetch(`${API_BASE}${path}`, {
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+        ...options.headers,
+      },
+      credentials: "same-origin",
+    });
+  } catch (cause) {
+    const error = new Error(
+      "Login API-তে যোগাযোগ করা যাচ্ছে না। terminal-এ npm start চালিয়ে http://localhost:3000 খুলুন।",
+      { cause },
+    );
+    error.code = "API_UNAVAILABLE";
+    throw error;
+  }
 
-  if (accountExists) return { ok: false, reason: "exists" };
-  if (!isPasswordValid(password)) return { ok: false, reason: "password" };
+  if (!response.headers.get("content-type")?.includes("application/json")) {
+    const error = new Error(
+      "Node API পাওয়া যায়নি। terminal-এ npm start চালিয়ে http://localhost:3000 খুলুন।",
+    );
+    error.code = "API_UNAVAILABLE";
+    throw error;
+  }
 
-  const salt = toHex(crypto.getRandomValues(new Uint8Array(16)));
-  const passwordHash = await hashPassword(password, salt);
-  accounts.push({
-    id: toHex(crypto.getRandomValues(new Uint8Array(16))),
-    fullName: fullName.trim(),
-    email: normalizedEmail,
-    username: username.trim(),
-    salt,
-    passwordHash,
+  let result;
+  try {
+    result = await response.json();
+  } catch (cause) {
+    const error = new Error("Server থেকে সঠিক উত্তর পাওয়া যায়নি.", { cause });
+    error.code = "INVALID_SERVER_RESPONSE";
+    throw error;
+  }
+
+  if (!response.ok) {
+    const error = new Error(result.error || "Request সম্পন্ন হয়নি।");
+    error.code = result.code || "API_ERROR";
+    error.status = response.status;
+    throw error;
+  }
+  return result;
+}
+
+async function registerAccount(account) {
+  const result = await apiRequest("/register", {
+    method: "POST",
+    body: JSON.stringify(account),
   });
-  localStorage.setItem(ACCOUNT_STORAGE_KEY, JSON.stringify(accounts));
-  return { ok: true };
+  return { ok: true, account: result.account };
 }
 
 async function authenticateAccount(identifier, password) {
-  const normalizedIdentifier = identifier.trim().toLowerCase();
-  const accounts = getAccounts();
-  const account = accounts.find(
-    (savedAccount) =>
-      savedAccount.email.toLowerCase() === normalizedIdentifier ||
-      savedAccount.username.toLowerCase() === normalizedIdentifier,
-  );
+  const result = await apiRequest("/login", {
+    method: "POST",
+    body: JSON.stringify({ identifier, password }),
+  });
+  return result.account;
+}
 
-  if (!account || !account.salt || !account.passwordHash) return null;
-  const passwordHash = await hashPassword(password, account.salt);
-  if (passwordHash !== account.passwordHash) return null;
-
-  if (!account.id) {
-    account.id = toHex(crypto.getRandomValues(new Uint8Array(16)));
-    localStorage.setItem(ACCOUNT_STORAGE_KEY, JSON.stringify(accounts));
+async function getCurrentAccount() {
+  try {
+    const result = await apiRequest("/me");
+    return result.account;
+  } catch (error) {
+    if (error.status === 401) return null;
+    throw error;
   }
-  return account;
+}
+
+async function signOut() {
+  await apiRequest("/logout", { method: "POST", body: "{}" });
 }
 
 window.EnglishSikhoAuth = {
+  isConfigured,
+  getConfigurationError,
   isPasswordValid,
-  hasActiveAccount,
+  togglePasswordVisibility,
   registerAccount,
   authenticateAccount,
+  getCurrentAccount,
+  signOut,
 };

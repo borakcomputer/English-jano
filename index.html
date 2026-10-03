@@ -38,14 +38,24 @@
     <!-- নিবন্ধিত account ID ছাড়া dashboard খোলা যাবে না -->
     <script src="./script/auth.js"></script>
     <script>
-      if (
-        localStorage.getItem("isLoggedIn") !== "true" ||
-        !window.EnglishSikhoAuth.hasActiveAccount()
-      ) {
-        localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("accountId");
-        window.location.replace("login.html");
-      }
+      (async () => {
+        if (!window.EnglishSikhoAuth?.isConfigured()) {
+          window.location.replace("login.html?session=api");
+          return;
+        }
+
+        try {
+          const account = await window.EnglishSikhoAuth.getCurrentAccount();
+          if (!account) {
+            window.location.replace("login.html?session=invalid");
+            return;
+          }
+          localStorage.setItem("fullName", account.fullName);
+          localStorage.setItem("username", account.username);
+        } catch {
+          window.location.replace("login.html?session=invalid");
+        }
+      })();
     </script>
   </head>
 

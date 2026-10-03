@@ -36,7 +36,12 @@
         <div
           class="border border-slate-200 rounded-md bg-white px-5 py-4 shadow-sm"
         >
-          <form id="registerForm" novalidate>
+          <form
+            id="registerForm"
+            action="/api/register"
+            method="post"
+            novalidate
+          >
             <div class="mb-4">
               <label
                 for="fullName"
@@ -75,14 +80,14 @@
               <label
                 for="username"
                 class="block mb-1.5 text-[13px] font-semibold text-[#243b63]"
-                >Username</label
+                >Username or Email Address</label
               >
               <input
                 id="username"
                 name="username"
                 type="text"
                 autocomplete="username"
-                placeholder="একটি ইউজারনেম বেছে নিন"
+                placeholder="ইউজারনেম বা ইমেইল লিখুন"
                 required
                 class="w-full h-[38px] rounded-md border border-slate-300 px-3 text-[13px] text-slate-700 placeholder:text-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
               />
@@ -109,9 +114,10 @@
                 <button
                   type="button"
                   data-password-target="password"
+                  onclick="window.EnglishSikhoAuth.togglePasswordVisibility(this)"
                   aria-label="Show password"
                   aria-pressed="false"
-                  class="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                  class="absolute right-0 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded text-slate-500 transition hover:text-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
                 >
                   <svg
                     data-eye-open
@@ -174,9 +180,10 @@
                 <button
                   type="button"
                   data-password-target="confirmPassword"
+                  onclick="window.EnglishSikhoAuth.togglePasswordVisibility(this)"
                   aria-label="Show confirmation password"
                   aria-pressed="false"
-                  class="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                  class="absolute right-0 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded text-slate-500 transition hover:text-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                 >
                   <svg
                     data-eye-open
@@ -239,38 +246,27 @@
     <!-- account নিবন্ধন ও password policy যাচাই -->
     <script src="./script/auth.js"></script>
     <script>
-      const { isPasswordValid, registerAccount, hasActiveAccount } =
-        window.EnglishSikhoAuth;
-
-      if (localStorage.getItem("isLoggedIn") === "true" && hasActiveAccount()) {
-        window.location.replace("index.html");
-      } else {
-        localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("accountId");
-      }
-
       const registerForm = document.getElementById("registerForm");
       const passwordInput = document.getElementById("password");
       const message = document.getElementById("register-message");
 
-      document.querySelectorAll("[data-password-target]").forEach((button) => {
-        button.addEventListener("click", () => {
-          const input = document.getElementById(button.dataset.passwordTarget);
-          const showPassword = input.type === "password";
-          input.type = showPassword ? "text" : "password";
-          button.setAttribute("aria-pressed", String(showPassword));
-          button.setAttribute(
-            "aria-label",
-            showPassword ? "Hide password" : "Show password",
-          );
-          button
-            .querySelector("[data-eye-open]")
-            .classList.toggle("hidden", showPassword);
-          button
-            .querySelector("[data-eye-closed]")
-            .classList.toggle("hidden", !showPassword);
-        });
-      });
+      if (!window.EnglishSikhoAuth?.isConfigured()) {
+        message.textContent = window.EnglishSikhoAuth
+          ? window.EnglishSikhoAuth.getConfigurationError()
+          : "Registration চালু করা যায়নি। পেজটি Live Server বা HTTPS দিয়ে খুলুন।";
+      } else {
+        window.EnglishSikhoAuth.getCurrentAccount()
+          .then((account) => {
+            if (account) window.location.replace("index.html");
+          })
+          .catch((error) => {
+            message.textContent = error.message;
+          });
+      }
+
+      const { isPasswordValid, registerAccount } =
+        window.EnglishSikhoAuth || {};
+
       const pendingIdentifier = new URLSearchParams(window.location.search).get(
         "identifier",
       );
@@ -286,6 +282,13 @@
         event.preventDefault();
         message.textContent = "";
 
+        if (!window.EnglishSikhoAuth?.isConfigured()) {
+          message.textContent =
+            window.EnglishSikhoAuth?.getConfigurationError() ||
+            "Authentication script লোড হয়নি।";
+          return;
+        }
+
         if (!registerForm.checkValidity()) {
           const errorMessage = "সব তথ্য সঠিকভাবে পূরণ করুন।";
           message.textContent = errorMessage;
@@ -299,6 +302,18 @@
         const password = passwordInput.value;
         const confirmPassword =
           document.getElementById("confirmPassword").value;
+
+        const isUsername =
+          /^[a-zA-Z0-9_]{3,30}$/.test(username) ||
+          (username.length <= 254 &&
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username));
+        if (!isUsername) {
+          const errorMessage =
+            "Username ৩-৩০ অক্ষরের ইংরেজি অক্ষর, সংখ্যা বা _ হতে হবে, অথবা email address দিন।";
+          message.textContent = errorMessage;
+          document.getElementById("username").focus();
+          return;
+        }
 
         if (!isPasswordValid(password)) {
           const errorMessage =
@@ -331,9 +346,9 @@
           });
           if (!result.ok) {
             message.textContent =
-              result.reason === "exists"
-                ? "এই email বা username দিয়ে account আগে থেকেই আছে।"
-                : "Password-এর সব নিয়ম পূরণ করুন।";
+              result.reason === "password"
+                ? "Password-এর সব নিয়ম পূরণ করুন।"
+                : "এই email বা username আগে থেকেই ব্যবহার করা হয়েছে।";
             alert(message.textContent);
             submitButton.disabled = false;
             submitButton.textContent = "Create Account";
@@ -342,9 +357,7 @@
           window.location.replace("login.html?registered=1");
         } catch (error) {
           message.textContent =
-            error.code === "SECURE_CRYPTO_UNAVAILABLE"
-              ? "HTTPS বা localhost দিয়ে page খুলে আবার register করুন।"
-              : "Account তৈরি করা যায়নি। আবার চেষ্টা করুন।";
+            error.message || "Account তৈরি করা যায়নি। আবার চেষ্টা করুন।";
           alert(message.textContent);
           submitButton.disabled = false;
           submitButton.textContent = "Create Account";

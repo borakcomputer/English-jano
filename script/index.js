@@ -835,8 +835,15 @@ searchInput.addEventListener("keydown", (event) => {
   }
 });
 
-// demo login-এর session মুছে login পাতায় ফিরিয়ে নেয়।
-function logout() {
+// active API session বন্ধ করে login পাতায় ফিরিয়ে নেয়।
+async function logout() {
+  try {
+    await window.EnglishSikhoAuth.signOut();
+  } catch (error) {
+    console.error("Logout failed:", error);
+    alert("Logout করা যায়নি। আবার চেষ্টা করুন।");
+    return;
+  }
   localStorage.removeItem("isLoggedIn");
   localStorage.removeItem("accountId");
   localStorage.removeItem("username");

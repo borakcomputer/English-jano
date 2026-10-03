@@ -36,7 +36,7 @@
         <div
           class="border border-slate-200 rounded-md bg-white px-5 py-4 shadow-sm"
         >
-          <form id="loginForm">
+          <form id="loginForm" novalidate onsubmit="return false;">
             <div class="mb-4">
               <label
                 for="username"
@@ -95,21 +95,39 @@
 
                 <button
                   type="button"
-                  id="togglePassword"
+                  data-password-target="password"
+                  onclick="window.EnglishSikhoAuth.togglePasswordVisibility(this)"
                   aria-label="Show password"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-600 hover:text-blue-600"
+                  aria-pressed="false"
+                  class="absolute right-0 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded text-slate-600  hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
                 >
                   <svg
-                    class="w-4 h-4"
+                    data-eye-open
+                    class="h-4 w-4"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path
                       d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"
                     />
                     <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <svg
+                    data-eye-closed
+                    class="hidden h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8" />
+                    <path
+                      d="M9.9 5.2A11 11 0 0 1 12 5c6.5 0 10 7 10 7a15 15 0 0 1-3 3.8M6.2 6.2C3.5 8 2 12 2 12s3.5 7 10 7c1.3 0 2.5-.3 3.5-.8"
+                    />
                   </svg>
                 </button>
               </div>
@@ -189,70 +207,79 @@
     <!-- শুধু আগে নিবন্ধিত account-এর credentials মিললেই dashboard খোলে -->
     <script src="./script/auth.js"></script>
     <script>
-      const { authenticateAccount, hasActiveAccount } = window.EnglishSikhoAuth;
-
-      // Already logged in হলে login page না দেখিয়ে index এ পাঠাবে
-      if (localStorage.getItem("isLoggedIn") === "true" && hasActiveAccount()) {
-        window.location.replace("index.html");
-      } else {
-        localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("accountId");
-      }
-
       const loginForm = document.getElementById("loginForm");
       const loginMessage = document.getElementById("login-message");
       const passwordInput = document.getElementById("password");
-      const togglePasswordButton = document.getElementById("togglePassword");
 
-      togglePasswordButton.addEventListener("click", () => {
-        const password = document.getElementById("password");
-        password.type = password.type === "password" ? "text" : "password";
-        togglePasswordButton.setAttribute(
-          "aria-label",
-          password.type === "password" ? "Show password" : "Hide password",
-        );
-      });
+      if (!window.EnglishSikhoAuth?.isConfigured()) {
+        loginMessage.textContent = window.EnglishSikhoAuth
+          ? window.EnglishSikhoAuth.getConfigurationError()
+          : "Login চালু করা যায়নি। পেজটি Live Server বা HTTPS দিয়ে খুলুন।";
+      } else {
+        const { authenticateAccount, getCurrentAccount } =
+          window.EnglishSikhoAuth;
 
-      if (new URLSearchParams(window.location.search).has("registered")) {
-        loginMessage.classList.remove("text-rose-700");
-        loginMessage.classList.add("text-emerald-700");
-        loginMessage.textContent = "Registration complete. এখন login করুন।";
-      }
+        getCurrentAccount()
+          .then((account) => {
+            if (account) {
+              localStorage.setItem("fullName", account.fullName);
+              localStorage.setItem("username", account.username);
+              window.location.replace("index.html");
+            }
+          })
+          .catch((error) => {
+            loginMessage.textContent = error.message;
+          });
 
-      loginForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        loginMessage.classList.remove("text-emerald-700");
-        loginMessage.classList.add("text-rose-700");
-        loginMessage.textContent = "";
+        const searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has("registered")) {
+          loginMessage.classList.remove("text-rose-700");
+          loginMessage.classList.add("text-emerald-700");
+          loginMessage.textContent = searchParams.has("confirm")
+            ? "অ্যাকাউন্ট তৈরি হয়েছে। Login করার আগে email-এর confirmation link-এ চাপ দিন।"
+            : "Registration complete. এখন login করুন।";
+        } else if (searchParams.has("session")) {
+          loginMessage.textContent =
+            searchParams.get("session") === "api"
+              ? "Login API চালু নেই। terminal-এ npm start চালিয়ে http://localhost:3000 খুলুন।"
+              : "Login session যাচাই হয়নি। আবার login করুন।";
+        } else if (searchParams.has("required")) {
+          loginMessage.textContent =
+            "ওয়েবসাইটে ঢুকতে আগে login করুন। Account না থাকলে আগে register করুন।";
+        }
 
-        const identifier = document.getElementById("username").value.trim();
-        const password = passwordInput.value;
-        const submitButton = loginForm.querySelector("button[type='submit']");
-        submitButton.disabled = true;
-        submitButton.textContent = "Checking...";
+        loginForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          loginMessage.classList.remove("text-emerald-700");
+          loginMessage.classList.add("text-rose-700");
+          loginMessage.textContent = "";
 
-        try {
-          const account = await authenticateAccount(identifier, password);
-          if (!account) {
-            loginMessage.textContent =
-              "Account পাওয়া যায়নি অথবা password ভুল। আগে register করুন।";
-            submitButton.disabled = false;
-            submitButton.textContent = "Login";
+          if (!loginForm.checkValidity()) {
+            loginMessage.textContent = "Username/email এবং password লিখুন।";
             return;
           }
 
-          localStorage.setItem("isLoggedIn", "true");
-          localStorage.setItem("accountId", account.id);
-          localStorage.setItem("username", account.username);
-          localStorage.setItem("fullName", account.fullName);
-          localStorage.setItem("email", account.email);
-          window.location.replace("index.html");
-        } catch {
-          loginMessage.textContent = "Login যাচাই করা যায়নি। আবার চেষ্টা করুন।";
-          submitButton.disabled = false;
-          submitButton.textContent = "Login";
-        }
-      });
+          const identifier = document.getElementById("username").value.trim();
+          const password = passwordInput.value;
+          const submitButton = loginForm.querySelector(
+            "button[type='submit']",
+          );
+          submitButton.disabled = true;
+          submitButton.textContent = "Checking...";
+
+          try {
+            const account = await authenticateAccount(identifier, password);
+            localStorage.setItem("fullName", account.fullName);
+            localStorage.setItem("username", account.username);
+            window.location.replace("index.html");
+          } catch (error) {
+            loginMessage.textContent =
+              error.message || "Login করা যায়নি। আবার চেষ্টা করুন।";
+            submitButton.disabled = false;
+            submitButton.textContent = "Login";
+          }
+        });
+      }
     </script>
   </body>
 </html>
