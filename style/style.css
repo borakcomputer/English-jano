@@ -63,6 +63,9 @@ button:disabled {
   margin-left: auto;
 }
 .site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -70,6 +73,52 @@ button:disabled {
   border-bottom: 1px solid rgba(23, 63, 54, 0.1);
   background: rgba(247, 248, 242, 0.94);
   backdrop-filter: blur(16px);
+}
+.site-nav .navbar-start {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
+}
+.mobile-nav {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  margin-left: auto;
+  position: relative;
+}
+.mobile-nav-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 30;
+  display: none;
+  width: 13rem;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(28, 41, 36, 0.14);
+  list-style: none;
+}
+.mobile-nav-menu.is-open {
+  display: block;
+}
+.mobile-nav-menu a {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  color: var(--forest);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.mobile-nav-menu a:hover {
+  background: #e9eee4;
 }
 .brand-mark {
   display: grid;
@@ -812,6 +861,12 @@ button:disabled {
   }
   #saved .flex.flex-col {
     align-items: flex-start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-nav-menu.is-open {
+    display: none;
   }
 }
 

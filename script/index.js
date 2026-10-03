@@ -784,23 +784,38 @@ function wireVocabularyControls() {
   const mobileMenuButton = document.querySelector(
     "[aria-controls='mobile-navigation']",
   );
+  const mobileMenu = document.getElementById("mobile-navigation");
+  const setMobileMenuOpen = (isOpen) => {
+    mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+    mobileMenuButton.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation" : "Open navigation",
+    );
+    mobileMenu.classList.toggle("is-open", isOpen);
+  };
   mobileMenuButton.addEventListener("click", () => {
-    const isExpanded =
-      mobileMenuButton.getAttribute("aria-expanded") === "true";
-    mobileMenuButton.setAttribute("aria-expanded", String(!isExpanded));
-    if (isExpanded) mobileMenuButton.blur();
+    const isOpen = mobileMenuButton.getAttribute("aria-expanded") === "true";
+    setMobileMenuOpen(!isOpen);
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      mobileMenuButton.setAttribute("aria-expanded", "false");
+    if (
+      event.key === "Escape" &&
+      mobileMenuButton.getAttribute("aria-expanded") === "true"
+    ) {
+      setMobileMenuOpen(false);
       mobileMenuButton.blur();
     }
   });
-  document.querySelectorAll("#mobile-navigation a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenuButton.setAttribute("aria-expanded", "false");
-      mobileMenuButton.blur();
-    });
+  document.addEventListener("click", (event) => {
+    if (!mobileMenuButton.parentElement.contains(event.target)) {
+      setMobileMenuOpen(false);
+    }
+  });
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMobileMenuOpen(false));
+  });
+  window.matchMedia("(min-width: 1024px)").addEventListener("change", () => {
+    setMobileMenuOpen(false);
   });
 }
 

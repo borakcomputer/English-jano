@@ -62,50 +62,8 @@
   <body>
     <!-- সাইটের মূল নেভিগেশন ও মোবাইল মেনু -->
     <header>
-      <div class="navbar site-nav px-4 md:px-8">
+      <div class="navbar site-nav px-4 md:px-8 flex justify-between">
         <div class="navbar-start">
-          <div class="dropdown">
-            <button
-              type="button"
-              aria-label="Open navigation"
-              aria-expanded="false"
-              aria-controls="mobile-navigation"
-              class="grid size-10 place-items-center rounded border border-transparent bg-transparent text-lg text-[#173f36] transition hover:bg-[#e9eee4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64] lg:hidden"
-            >
-              <i class="fa-solid fa-bars text-lg"></i>
-            </button>
-
-            <ul
-              id="mobile-navigation"
-              tabindex="-1"
-              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <a href="#faq"
-                  ><i class="fa-solid fa-circle-question"></i> FAQ</a
-                >
-              </li>
-              <li>
-                <a href="#learn"><i class="fa-solid fa-book-open"></i> Learn</a>
-              </li>
-              <li>
-                <a href="#practice"
-                  ><i class="fa-solid fa-brain"></i> Practice</a
-                >
-              </li>
-              <li>
-                <a href="#saved"
-                  ><i class="fa-solid fa-bookmark"></i> Saved Words</a
-                >
-              </li>
-              <li>
-                <a href="#" onclick="logout(); return false;">
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i> LogOut
-                </a>
-              </li>
-            </ul>
-          </div>
-
           <a href="index.html" class="flex items-center gap-1">
             <span class="brand-mark"><i class="fa-solid fa-language"></i></span>
             <span class="brand-name"
@@ -114,8 +72,45 @@
           </a>
         </div>
 
-        <div class="hidden lg:flex">
-          <ul class="">
+        <div class="mobile-nav">
+          <button
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="mobile-navigation"
+            class="grid size-10 place-items-center rounded border border-transparent bg-transparent text-lg text-[#173f36] transition hover:bg-[#e9eee4] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1dd64] lg:hidden"
+          >
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+          <ul id="mobile-navigation" class="mobile-nav-menu">
+            <li>
+              <a href="#faq"
+                ><i class="fa-solid fa-circle-question"></i> FAQ</a
+              >
+            </li>
+            <li>
+              <a href="#learn"><i class="fa-solid fa-book-open"></i> Learn</a>
+            </li>
+            <li>
+              <a href="#practice"
+                ><i class="fa-solid fa-brain"></i> Practice</a
+              >
+            </li>
+            <li>
+              <a href="#saved"
+                ><i class="fa-solid fa-bookmark"></i> Saved Words</a
+              >
+            </li>
+            <li>
+              <a href="#" onclick="logout(); return false;">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> LogOut
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hidden items-center lg:flex">
+          <ul class="flex items-center gap-1">
             <li>
               <a
                 href="#faq"
